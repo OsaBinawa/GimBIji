@@ -15,7 +15,7 @@ public class PathDrawer : MonoBehaviour
         {
             isDragging = true;
             pathTiles.Clear();
-            ResetAllTiles(); // clear highlights from previous path
+            ResetAllTiles();
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -32,11 +32,9 @@ public class PathDrawer : MonoBehaviour
             {
                 if (!pathTiles.Contains(tile))
                 {
-                    // Only allow drawing from Start tile
                     if (pathTiles.Count == 0 && tile.tileType != TileType.Start)
                         return;
 
-                    // Optional: restrict to adjacent tiles
                     if (pathTiles.Count > 0)
                     {
                         GridTile lastTile = pathTiles[^1];
