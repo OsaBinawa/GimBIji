@@ -9,6 +9,9 @@ public class PathDrawer : MonoBehaviour
     private bool isDragging = false;
     private bool pathFinished = false;
 
+    //Sementara
+    public PlayerController player;
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && !pathFinished)
@@ -50,6 +53,12 @@ public class PathDrawer : MonoBehaviour
                         pathFinished = true;
                         isDragging = false;
                         Debug.Log("Finish tile reached. Path completed!");
+
+                        // Sementara
+                        if (player != null)
+                            player.SetPath(pathTiles);
+                        else
+                            Debug.LogWarning("Player reference not set in PathDrawer.");
                     }
                 }
             }
@@ -71,4 +80,7 @@ public class PathDrawer : MonoBehaviour
         int dy = Mathf.Abs(a.y - b.y);
         return (dx + dy == 1); // Manhattan distance = 1
     }
+
+    //Sementara
+
 }
