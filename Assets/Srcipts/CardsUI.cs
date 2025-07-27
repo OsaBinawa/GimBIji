@@ -87,7 +87,6 @@ public class CardsUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
         }
     }
 
-
     public void OnEndDrag(PointerEventData eventData)
     {
         canvasGroup.alpha = 1f;
@@ -99,7 +98,6 @@ public class CardsUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
 
         if (gridManager != null)
         {
-            // Calculate grid origin
             Vector2 origin = gridManager.autoCenter
                 ? new Vector2(-gridManager.width * gridManager.tileSize / 2f + gridManager.tileSize / 2f,
                               -gridManager.height * gridManager.tileSize / 2f + gridManager.tileSize / 2f)
@@ -110,16 +108,29 @@ public class CardsUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
             int y = Mathf.FloorToInt(local.y / gridManager.tileSize);
             Vector2Int gridPos = new Vector2Int(x, y);
 
-            // Check bounds
             if (x >= 0 && x < gridManager.width && y >= 0 && y < gridManager.height)
             {
-                // Align to tile center
                 Vector2 spawnPos = origin + new Vector2(x * gridManager.tileSize, y * gridManager.tileSize);
 
-                if (towerData.towerPref != null)
+                GridTile tile = gridManager.GetTileAtPosition(gridPos);
+
+                if (tile == null)
+                {
+                    Debug.Log("Invalid tile.");
+                }
+                else if (tile.IsOccupied)
+                {
+                    Debug.Log("Tile is already occupied.");
+                }
+                else if (System.Array.IndexOf(towerData.AllowedTileTypes, tile.tileType) == -1)
+                {
+                    Debug.Log($"Tower type {towerData.name} not allowed on tile type {tile.tileType}");
+                }
+                else if (towerData.towerPref != null)
                 {
                     Instantiate(towerData.towerPref, spawnPos, Quaternion.identity);
-                    Debug.Log("Spawned tower at grid: " + gridPos);
+                    tile.SetOccupied(true);
+                    Debug.Log("Tower placed at grid: " + gridPos);
                 }
                 else
                 {
@@ -128,7 +139,7 @@ public class CardsUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
             }
             else
             {
-                Debug.Log("Tried to place tower outside grid.");
+                Debug.Log("Tried to place tower outside the grid.");
             }
         }
         else
@@ -136,8 +147,10 @@ public class CardsUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
             Debug.LogWarning("GridManager not found.");
         }
 
+        DestroyPreview();
         rectTransform.position = originalPosition;
     }
+
 
     private void DestroyPreview()
     {

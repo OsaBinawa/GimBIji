@@ -10,7 +10,7 @@ public class GridTile : MonoBehaviour
 
     private SpriteRenderer sr;
     public Sprite[] Sprite;
-
+    public bool IsOccupied {  get; private set; }
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -44,5 +44,10 @@ public class GridTile : MonoBehaviour
     public void UpdateTileVisual()
     {
         UpdateBaseColor();
+    }
+
+    public void SetOccupied(bool occupied)
+    {
+        IsOccupied = occupied;
     }
 }

@@ -63,8 +63,15 @@ public class GridManager : MonoBehaviour
         if (IsInBounds(pos))
         {
             grid[pos.x, pos.y].tileType = type;
-            grid[pos.x, pos.y].SendMessage("Awake"); // refresh color
+            grid[pos.x, pos.y].SendMessage("Awake"); 
         }
+    }
+
+    public GridTile GetTileAtPosition(Vector2Int pos)
+    {
+        if (pos.x >= 0 && pos.x < width && pos.y >= 0 && pos.y < height)
+            return grid[pos.x, pos.y];
+        return null;
     }
 
     bool IsInBounds(Vector2Int pos)
@@ -74,7 +81,7 @@ public class GridManager : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        // Draw tile bounds
+       
         Vector2 origin = autoCenter
             ? new Vector2(-width * tileSize / 2f + tileSize / 2f, -height * tileSize / 2f + tileSize / 2f)
             : gridOrigin;
@@ -88,7 +95,7 @@ public class GridManager : MonoBehaviour
                 Gizmos.DrawWireCube(center, Vector3.one * tileSize * 0.95f);
 
 #if UNITY_EDITOR
-                // Label tile coordinates
+                
                 GUIStyle style = new GUIStyle
                 {
                     normal = { textColor = Color.yellow },

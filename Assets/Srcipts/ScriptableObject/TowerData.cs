@@ -11,9 +11,10 @@ public class TowerData : ScriptableObject
     public Sprite icon;
     public GameObject towerPref;
     [SerializeField] private TowerType towerType;
+    [SerializeField] private TileType[] allowedTileTypes;
+    public TileType[] AllowedTileTypes => allowedTileTypes;
 
-    
-    
+
     public enum TowerType
     {
         Attack,
