@@ -9,6 +9,7 @@ public class GridTile : MonoBehaviour
     public TileType tileType;
 
     private SpriteRenderer sr;
+    public Sprite[] Sprite;
 
     private void Awake()
     {
@@ -19,7 +20,7 @@ public class GridTile : MonoBehaviour
     public void SetHighlight(bool isHighlighted)
     {
         if (isHighlighted)
-            sr.color = Color.green;
+            sr.sprite = Sprite[1];
         else
             UpdateBaseColor();
     }
@@ -35,7 +36,7 @@ public class GridTile : MonoBehaviour
                 sr.color = Color.red;
                 break;
             default:
-                sr.color = Color.white;
+                sr.sprite = Sprite[0];
                 break;
         }
     }
