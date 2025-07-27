@@ -103,9 +103,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 0}
   tileType: 0
-  Sprite:
+  basedSprites:
+  - {fileID: 1073298726, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: 1459745494, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: -2014425400, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: -1392180190, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
   - {fileID: 1988421241, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: -420369043, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: -1304377643, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: -1281535078, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: 1858817829, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: 618348946, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: -1149985813, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: -2026664027, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: -893237534, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: -2025016955, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: -474448766, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: -1602750000, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: 6156676, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: 1020440191, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  randomBasedSprite: 0
+  pathSprites:
+  - {fileID: -1056857244, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
   - {fileID: -1173869591, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: 2091687880, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: 857986831, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: -58669326, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: 1523842474, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: -558563772, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: 1803203652, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: 2051127891, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: 534378072, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: 939771242, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: 300893456, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: 1786913153, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: 782585268, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: -617406075, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: -491685901, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: 1579997649, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: -35051294, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
 --- !u!61 &5901799831754065246
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -4,21 +4,19 @@ using UnityEngine;
 public class PathDrawer : MonoBehaviour
 {
     public Camera cam;
+    public PlayerController player;
 
     private List<GridTile> pathTiles = new();
     private bool isDragging = false;
     private bool pathFinished = false;
-
-    //Sementara
-    public PlayerController player;
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && !pathFinished)
         {
             isDragging = true;
-            pathTiles.Clear();
-            ResetAllTiles();
+            //ResetAllTiles();
+            //pathTiles.Clear();
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -33,44 +31,67 @@ public class PathDrawer : MonoBehaviour
 
             if (hit != null && hit.TryGetComponent(out GridTile tile))
             {
-                if (!pathTiles.Contains(tile))
+                if (pathTiles.Count == 0)
                 {
-                    if (pathTiles.Count == 0 && tile.tileType != TileType.Start)
+                    if (tile.tileType != TileType.Start)
                         return;
 
-                    if (pathTiles.Count > 0)
+                    AddTileToPath(tile);
+                }
+                else
+                {
+                    GridTile lastTile = pathTiles[^1];
+
+                    // If the current tile is already in the path and it's the one before the last, backtrack
+                    if (pathTiles.Count > 1 && tile == pathTiles[^2])
                     {
-                        GridTile lastTile = pathTiles[^1];
-                        if (!IsAdjacent(lastTile.gridPosition, tile.gridPosition))
-                            return;
+                        RemoveLastTileFromPath();
                     }
-
-                    pathTiles.Add(tile);
-                    tile.SetHighlight(true);
-
-                    if (tile.tileType == TileType.Finish)
+                    // If it's a new, adjacent tile, add it
+                    else if (!pathTiles.Contains(tile) && IsAdjacent(lastTile.gridPosition, tile.gridPosition))
                     {
-                        pathFinished = true;
-                        isDragging = false;
-                        Debug.Log("Finish tile reached. Path completed!");
-
-                        // Sementara
-                        if (player != null)
-                            player.SetPath(pathTiles);
-                        else
-                            Debug.LogWarning("Player reference not set in PathDrawer.");
+                        AddTileToPath(tile);
                     }
                 }
             }
         }
     }
 
-    void ResetAllTiles()
+    void AddTileToPath(GridTile tile)
     {
-        GridTile[] allTiles = FindObjectsOfType<GridTile>();
-        foreach (var tile in allTiles)
+        pathTiles.Add(tile);
+        tile.SetHighlight(true);
+
+        if (tile.tileType == TileType.Finish)
         {
-            tile.SetHighlight(false);
+            pathFinished = true;
+            isDragging = false;
+            Debug.Log("Finish tile reached. Path completed!");
+
+            if (player != null)
+                player.SetPath(pathTiles);
+            else
+                Debug.LogWarning("Player reference not set in PathDrawer.");
+        }
+    }
+
+    void RemoveLastTileFromPath()
+    {
+        GridTile tile = pathTiles[^1];
+        pathTiles.RemoveAt(pathTiles.Count - 1);
+        tile.SetHighlight(false);
+    }
+
+    public void ResetAllTiles()
+    {
+        if (!pathFinished)
+        {
+            foreach (var tile in pathTiles)
+            {
+                tile.SetHighlight(false);
+            }
+            pathTiles.Clear();
+            pathFinished = false;
         }
     }
 
@@ -78,9 +99,6 @@ public class PathDrawer : MonoBehaviour
     {
         int dx = Mathf.Abs(a.x - b.x);
         int dy = Mathf.Abs(a.y - b.y);
-        return (dx + dy == 1); // Manhattan distance = 1
+        return (dx + dy == 1); // Manhattan distance
     }
-
-    //Sementara
-
 }

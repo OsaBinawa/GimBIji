@@ -9,7 +9,10 @@ public class GridTile : MonoBehaviour
     public TileType tileType;
 
     private SpriteRenderer sr;
-    public Sprite[] Sprite;
+    public Sprite[] basedSprites;
+    [SerializeField] private int randomBasedSprite;
+    public Sprite[] pathSprites;
+
     public bool IsOccupied {  get; private set; }
     private void Awake()
     {
@@ -17,10 +20,18 @@ public class GridTile : MonoBehaviour
         UpdateBaseColor();
     }
 
+    private void Start()
+    {
+        randomBasedSprite = Random.Range(0, basedSprites.Length);
+        sr.sprite = basedSprites[randomBasedSprite];
+    }
+
     public void SetHighlight(bool isHighlighted)
     {
+        int randomSprite = Random.Range(0, pathSprites.Length);
+
         if (isHighlighted)
-            sr.sprite = Sprite[1];
+            sr.sprite = pathSprites[randomSprite];
         else
             UpdateBaseColor();
     }
@@ -36,7 +47,7 @@ public class GridTile : MonoBehaviour
                 sr.color = Color.red;
                 break;
             default:
-                sr.sprite = Sprite[0];
+                sr.sprite = basedSprites[randomBasedSprite];
                 break;
         }
     }
