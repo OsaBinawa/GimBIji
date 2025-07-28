@@ -5,6 +5,15 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
+
+public enum objectiveType {pickUp, dropOff }
+[System.Serializable]
+public class ResoucePosition
+{
+    public Vector2Int position;
+    public objectiveType type;  
+}
+
 public class GridManager : MonoBehaviour
 {
     public GameObject tilePrefab;
@@ -18,7 +27,12 @@ public class GridManager : MonoBehaviour
     public Vector2Int startTilePos;
     public Vector2Int finishTilePos;
 
+    public GameObject pickupPrefab;
+    public GameObject dropoffPrefab;
+    public List<ResoucePosition> Resources = new();
+
     private GridTile[,] grid;
+
 
     void Start()
     {
@@ -56,6 +70,34 @@ public class GridManager : MonoBehaviour
 
         SetTileType(startTilePos, TileType.Start);
         SetTileType(finishTilePos, TileType.Finish);
+
+        foreach (var point in Resources)
+        {
+            if (IsInBounds(point.position))
+            {
+                GridTile tile = grid[point.position.x, point.position.y];
+                tile.SetOccupied(true);
+
+                Vector3 spawnPos = tile.transform.position;
+                GameObject obj = null;
+
+                switch (point.type)
+                {
+                    case objectiveType.pickUp:
+                        if (pickupPrefab != null)
+                            obj = Instantiate(pickupPrefab, spawnPos, Quaternion.identity, tile.transform);
+                        break;
+
+                    case objectiveType.dropOff:
+                        if (dropoffPrefab != null)
+                            obj = Instantiate(dropoffPrefab, spawnPos, Quaternion.identity, tile.transform);
+                        break;
+                }
+
+                if (obj != null)
+                    tile.SetOccupied(obj);
+            }
+        }
     }
 
     void SetTileType(Vector2Int pos, TileType type)
