@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,6 +16,12 @@ public class PlayerController : MonoBehaviour
     public LayerMask resourceLayer;
     public LayerMask dropOffLayer;
 
+    // Optional: event when path is completed
+    public UnityEvent onPathCompleted;
+
+    // Optional: track last position (Finish)
+    private Vector3 finishTilePosition;
+
     public void SetPath(List<GridTile> path)
     {
         pathQueue.Clear();
@@ -22,6 +29,9 @@ public class PlayerController : MonoBehaviour
         {
             pathQueue.Enqueue(tile.transform.position);
         }
+
+        if (path.Count > 0)
+            finishTilePosition = path[^1].transform.position;
 
         if (!isMoving)
             StartCoroutine(FollowPath());
@@ -43,10 +53,10 @@ public class PlayerController : MonoBehaviour
 
             transform.position = target;
 
+            // Try collecting resources if not full
             if (heldResourceCount < maxResourceHeld)
             {
                 bool collected = TryCollectAdjacentResources();
-
                 if (collected)
                     yield return new WaitForSeconds(0.3f);
             }
@@ -63,6 +73,9 @@ public class PlayerController : MonoBehaviour
         }
 
         isMoving = false;
+
+        // Call event when finished path
+        onPathCompleted?.Invoke();
     }
 
     private bool TryCollectAdjacentResources()
@@ -147,5 +160,12 @@ public class PlayerController : MonoBehaviour
     public void ResetResources()
     {
         heldResourceCount = 0;
+    }
+
+    public bool IsAtEndOfPath => !isMoving && pathQueue.Count == 0;
+
+    public bool IsOnFinishTile()
+    {
+        return Vector3.Distance(transform.position, finishTilePosition) < 0.1f;
     }
 }

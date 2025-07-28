@@ -64,11 +64,11 @@ public class TowerStats : MonoBehaviour
 
     void DetectTilesInRange()
     {
-        Vector2Int forward = Vector2Int.up; // Or .right, .down, etc.
+        Vector2Int forward = Vector2Int.up;
 
         for (int dx = -RangeWidth / 2; dx <= RangeWidth / 2; dx++)
         {
-            for (int dy = 1; dy <= RangeHeight; dy++) // y = 1 to start in front
+            for (int dy = 1; dy <= RangeHeight; dy++)
             {
                 Vector2Int offset = new Vector2Int(dx, dy);
                 Vector2Int targetPos = currentGridPosition + RotateOffset(offset, forward);

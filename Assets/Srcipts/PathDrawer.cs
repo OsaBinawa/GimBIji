@@ -6,7 +6,7 @@ public class PathDrawer : MonoBehaviour
     public Camera cam;
     public PlayerController player;
 
-    private List<GridTile> pathTiles = new();
+    public List<GridTile> pathTiles = new();
     private bool isDragging = false;
     private bool pathFinished = false;
 
@@ -31,6 +31,40 @@ public class PathDrawer : MonoBehaviour
 
             if (hit != null && hit.TryGetComponent(out GridTile tile))
             {
+                Collider2D resourceCheck = Physics2D.OverlapPoint(tile.transform.position, LayerMask.GetMask("Resource"));
+                if (resourceCheck != null && resourceCheck.CompareTag("Resource"))
+                {
+                    // Block drawing on top of resource
+                    return;
+                }
+
+                if (!pathTiles.Contains(tile))
+                {
+                    // Only allow drawing from Start tile
+                    if (pathTiles.Count == 0 && tile.tileType != TileType.Start)
+                        return;
+
+                    if (pathTiles.Count > 0)
+                    {
+                        GridTile lastTile = pathTiles[^1];
+                        if (!IsAdjacent(lastTile.gridPosition, tile.gridPosition))
+                            return;
+                    }
+
+                    pathTiles.Add(tile);
+                    tile.SetHighlight(true);
+
+                    if (tile.tileType == TileType.Finish)
+                    {
+                        pathFinished = true;
+                        isDragging = false;
+                        Debug.Log("Finish tile reached. Path completed!");
+
+                        if (player != null)
+                            player.SetPath(pathTiles);
+                    }
+                }
+
                 if (pathTiles.Count == 0)
                 {
                     if (tile.tileType != TileType.Start)
