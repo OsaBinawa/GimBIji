@@ -6,12 +6,18 @@ using UnityEngine.UI;
 public class TowerData : ScriptableObject
 {
     public string Name;
+    public float HP;
     public float Damage;
     public float fireRate;
     public Sprite icon;
     public GameObject towerPref;
     [SerializeField] private TowerType towerType;
     [SerializeField] private TileType[] allowedTileTypes;
+    [SerializeField] private int rangeWidth = 2;
+    [SerializeField] private int rangeHeight = 2;
+
+    public int RangeWidth => rangeWidth;
+    public int RangeHeight => rangeHeight;
     public TileType[] AllowedTileTypes => allowedTileTypes;
 
 

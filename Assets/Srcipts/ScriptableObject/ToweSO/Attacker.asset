@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Attacker
   m_EditorClassIdentifier: 
   Name: Ini Segitiga
+  HP: 100
   Damage: 10
   fireRate: 2
   icon: {fileID: 1697633455420390628, guid: 0667433d388ecff42b7025ed9f16f6e2, type: 3}
   towerPref: {fileID: 3335513545907816477, guid: 8f20e7b2368cc7a48aa50d8fbb7a84cb, type: 3}
   towerType: 0
   allowedTileTypes: 00000000
+  rangeWidth: 2
+  rangeHeight: 2
