@@ -113,6 +113,14 @@ public class PathDrawer : MonoBehaviour
         ResetAllTiles();
     }
 
+    public void ResetButton()
+    {
+        if (!pathFinished)
+        {
+            ResetAllTiles();
+        }
+    }
+
     bool IsAdjacent(Vector2Int a, Vector2Int b)
     {
         int dx = Mathf.Abs(a.x - b.x);
