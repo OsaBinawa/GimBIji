@@ -22,6 +22,13 @@ public class PlayerController : MonoBehaviour
     // Optional: track last position (Finish)
     private Vector3 finishTilePosition;
 
+    private Vector3 startPosition;
+
+    public void Start()
+    {
+        startPosition = transform.position;
+    }
+
     public void SetPath(List<GridTile> path)
     {
         pathQueue.Clear();
@@ -167,5 +174,13 @@ public class PlayerController : MonoBehaviour
     public bool IsOnFinishTile()
     {
         return Vector3.Distance(transform.position, finishTilePosition) < 0.1f;
+    }
+    public void ResetToStartPosition()
+    {
+        StopAllCoroutines(); // Hentikan gerakan saat ini
+        pathQueue.Clear();   // Bersihkan path
+        isMoving = false;
+        transform.position = startPosition;
+        ResetResources();    // Opsional: reset resource juga
     }
 }

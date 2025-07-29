@@ -18,6 +18,10 @@ public class Enemy : MonoBehaviour, IHealth
     [SerializeField] private float currentHealth = 100f;
     public float MaxHealth => maxHealth;
     public float CurrentHealth => currentHealth;
+
+    public delegate void EnemyDeath(Enemy enemy);
+    public event EnemyDeath OnEnemyDied;
+
     public void SetPath(List<GridTile> path)
     {
         this.path = new List<GridTile>(path); // clone the path
@@ -87,6 +91,8 @@ public class Enemy : MonoBehaviour, IHealth
         if (currentHealth <= 0)
         {
             Die();
+            OnEnemyDied?.Invoke(this);
+            Destroy(gameObject);
         }
     }
 
