@@ -39,12 +39,19 @@ public class TowerStats : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetMouseButtonUp(0))
-        {
-            RotateDirectionClockwise();
-            //Sementara aja nanti ganti ke button UI aja ini ampas soal e
-        }
+       
     }
+
+    public void OnRotateButton()
+    {
+        RotateDirectionClockwise();
+    }
+
+    public void OnDestroyButton()
+    {
+        Destroy(this.gameObject);
+    }
+
     private void RotateDirectionClockwise()
     {
         if (facingDirection == Vector2Int.up)
