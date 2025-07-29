@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1af7777eb78b38419b7535da94c1782, type: 3}
+  m_Name: WaveManager
+  m_EditorClassIdentifier: 
+  waves:
+  - enemiesInWave: 4
+    timeBetweenEnemies: 0.5
+  - enemiesInWave: 8
+    timeBetweenEnemies: 0.5
+  - enemiesInWave: 12
+    timeBetweenEnemies: 0.5
