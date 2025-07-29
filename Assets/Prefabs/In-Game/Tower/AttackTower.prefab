@@ -104,6 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerData: {fileID: 11400000, guid: 0babd7d0e6a9c7d4cb68ffe72d00095c, type: 2}
+  uiPanel: {fileID: 5350381817075702043}
   curHP: 0
   projectilePrefab: {fileID: 8540980220111973486, guid: 3148d9a16779bf24b8376bb7f6c589e8, type: 3}
   firePoint: {fileID: 2951654233027394730}
@@ -140,7 +141,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

@@ -3,6 +3,7 @@ using UnityEngine;
 public class TowerStats : MonoBehaviour
 {
     [SerializeField] private TowerData towerData;
+    [SerializeField] private GameObject uiPanel;
     [SerializeField] private float fireRate => towerData.fireRate;
     [SerializeField] private float maxHP => towerData.HP;
     [SerializeField] private float dmg => towerData.Damage;
@@ -35,6 +36,10 @@ public class TowerStats : MonoBehaviour
         {
             currentGridPosition = GetGridPositionFromWorld(transform.position);
         }
+
+        if (uiPanel != null)
+            uiPanel.SetActive(false);
+
     }
 
     private void FixedUpdate()
@@ -152,6 +157,18 @@ public class TowerStats : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(transform.position, 0.1f);
+    }
+
+    public void ShowUI()
+    {
+        if (uiPanel != null)
+            uiPanel.SetActive(true);
+    }
+
+    public void HideUI()
+    {
+        if (uiPanel != null)
+            uiPanel.SetActive(false);
     }
 
 
