@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IHealth
 {
     private List<GridTile> path = new();
     private int currentIndex = 1; // Start from second tile
@@ -14,7 +14,10 @@ public class Enemy : MonoBehaviour
     public LayerMask towerLayer;
 
     private bool attacking = false;
-
+    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] private float currentHealth = 100f;
+    public float MaxHealth => maxHealth;
+    public float CurrentHealth => currentHealth;
     public void SetPath(List<GridTile> path)
     {
         this.path = new List<GridTile>(path); // clone the path
@@ -76,6 +79,21 @@ public class Enemy : MonoBehaviour
         attacking = false;
         isStopped = false;
         currentIndex++; // continue walking
+    }
+    public void TakeDamage(float damage)
+    {
+        Debug.Log($"Enemy took {damage} damage!");
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        Debug.Log("Tower died.");
+        Destroy(gameObject);
     }
 
     void OnReachFinish()

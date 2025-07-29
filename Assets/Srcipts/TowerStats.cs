@@ -7,11 +7,14 @@ public class TowerStats : MonoBehaviour
     [SerializeField] private float maxHP => towerData.HP;
     [SerializeField] private float dmg => towerData.Damage;
     [SerializeField] private float curHP;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private float cooldown;
     private Vector2Int facingDirection = Vector2Int.up;
 
     public GridManager gridManager;
     public Vector2Int currentGridPosition;
-
+    
 
     private int RangeWidth => towerData.RangeWidth;
     private int RangeHeight => towerData.RangeHeight;
@@ -64,7 +67,7 @@ public class TowerStats : MonoBehaviour
 
     void DetectTilesInRange()
     {
-        Vector2Int forward = Vector2Int.up;
+        Vector2Int forward = facingDirection;
 
         for (int dx = -RangeWidth / 2; dx <= RangeWidth / 2; dx++)
         {
@@ -76,13 +79,32 @@ public class TowerStats : MonoBehaviour
 
                 if (tile != null)
                 {
-                    //Debug.DrawLine(transform.position, tile.transform.position, Color.red);
-                    // Detection logic here
+                    Collider2D[] hits = Physics2D.OverlapCircleAll(tile.transform.position, 0.3f);
+                    foreach (var hit in hits)
+                    {
+                        if (hit.CompareTag("Enemy")) // Or check for Enemy component
+                        {
+                            Vector3 enemyPos = hit.transform.position;
+                            Shoot(enemyPos);
+                            return; // Shoot once per update
+                        }
+                    }
                 }
             }
         }
     }
 
+    void Shoot(Vector3 targetPosition)
+    {
+        if (Time.time < cooldown) return;
+
+        Vector3 dir = (targetPosition - transform.position).normalized;
+
+        GameObject proj = Instantiate(projectilePrefab, firePoint != null ? firePoint.position : transform.position, Quaternion.identity);
+        proj.GetComponent<Projectile>().SetDirection(dir);
+
+        cooldown = Time.time + 1f / fireRate;
+    }
 
     private Vector2Int GetGridPositionFromWorld(Vector3 worldPosition)
     {

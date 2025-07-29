@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Resource
   - DropOff
+  - Enemy
   layers:
   - Default
   - TransparentFX

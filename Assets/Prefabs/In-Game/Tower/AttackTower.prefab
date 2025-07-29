@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6126073350095311836}
   - component: {fileID: 7245221800766922170}
   - component: {fileID: 4155401798694828875}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,8 @@ Transform:
   m_LocalPosition: {x: 3, y: -3.5, z: 0}
   m_LocalScale: {x: 0.05619707, y: 0.05619707, z: 0.05619707}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2951654233027394730}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6126073350095311836
@@ -103,6 +104,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerData: {fileID: 11400000, guid: 0babd7d0e6a9c7d4cb68ffe72d00095c, type: 2}
   curHP: 0
+  projectilePrefab: {fileID: 8540980220111973486, guid: 3148d9a16779bf24b8376bb7f6c589e8, type: 3}
+  firePoint: {fileID: 2951654233027394730}
+  cooldown: 0
   gridManager: {fileID: 0}
   currentGridPosition: {x: 0, y: 0}
 --- !u!61 &4155401798694828875
@@ -151,3 +155,34 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 20.9375, y: 18.0625}
   m_EdgeRadius: 0
+--- !u!1 &4917743969643318826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2951654233027394730}
+  m_Layer: 7
+  m_Name: Firepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2951654233027394730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4917743969643318826}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4696908864783624426}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
