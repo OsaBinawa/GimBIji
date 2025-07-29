@@ -1033,7 +1033,7 @@ MonoBehaviour:
   tilePrefab: {fileID: 316880907763561823, guid: 025ac89e1c98bf34d868265a3aabe915, type: 3}
   width: 7
   height: 8
-  tileSize: 1
+  tileSize: 0.79
   autoCenter: 1
   gridOrigin: {x: 0, y: 0}
   startTilePos: {x: 3, y: 0}

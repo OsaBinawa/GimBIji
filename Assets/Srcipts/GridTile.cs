@@ -12,6 +12,7 @@ public class GridTile : MonoBehaviour
     public Sprite[] basedSprites;
     [SerializeField] private int randomBasedSprite;
     public Sprite[] pathSprites;
+    [SerializeField] private GameObject occupyingObject;
 
     public bool IsOccupied {  get; private set; }
     private void Awake()
@@ -57,8 +58,23 @@ public class GridTile : MonoBehaviour
         UpdateBaseColor();
     }
 
+    public void SetOccupied(GameObject obj)
+    {
+        occupyingObject = obj;
+        IsOccupied = obj != null;
+    }
+
     public void SetOccupied(bool occupied)
     {
+        if (!occupied)
+        {
+            occupyingObject = null;
+        }
         IsOccupied = occupied;
     }
+    public GameObject GetOccupyingObject()
+    {
+        return occupyingObject;
+    }
+
 }

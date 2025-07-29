@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TowerStats : MonoBehaviour
 {
@@ -35,6 +35,8 @@ public class TowerStats : MonoBehaviour
         if (gridManager != null)
         {
             currentGridPosition = GetGridPositionFromWorld(transform.position);
+            Debug.Log("Tower grid position: " + currentGridPosition);
+
         }
 
         if (uiPanel != null)
@@ -54,6 +56,21 @@ public class TowerStats : MonoBehaviour
 
     public void OnDestroyButton()
     {
+        if (gridManager != null)
+        {
+            Debug.Log("Destroying tower at grid position: " + currentGridPosition);
+            GridTile tile = gridManager.GetTileAtPosition(currentGridPosition);
+            if (tile != null)
+            {
+                Debug.Log("Clearing tile at: " + tile.gridPosition);
+                tile.SetOccupied((GameObject)null);
+            }
+            else
+            {
+                Debug.LogWarning("Tile was null during tower destruction.");
+            }
+        }
+
         Destroy(this.gameObject);
     }
 
@@ -127,11 +144,12 @@ public class TowerStats : MonoBehaviour
 
         Vector2 local = new Vector2(worldPosition.x, worldPosition.y) - origin;
 
-        int x = Mathf.FloorToInt(local.x / gridManager.tileSize);
-        int y = Mathf.FloorToInt(local.y / gridManager.tileSize);
+        int x = Mathf.RoundToInt(local.x / gridManager.tileSize);
+        int y = Mathf.RoundToInt(local.y / gridManager.tileSize);
 
         return new Vector2Int(x, y);
     }
+
 
     void OnDrawGizmosSelected()
     {

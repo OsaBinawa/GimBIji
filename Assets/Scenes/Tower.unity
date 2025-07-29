@@ -727,7 +727,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.9044792, y: 0.07114816}
   m_AnchorMax: {x: 0.9713539, y: 0.185}
-  m_AnchoredPosition: {x: 0.715271, y: 0.8604126}
+  m_AnchoredPosition: {x: 0.71533203, y: 0.86035156}
   m_SizeDelta: {x: 0.012390137, y: -3.7529907}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &366292303
@@ -777,6 +777,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1324895167}
         m_TargetAssemblyTypeName: EnemySpawner, Assembly-CSharp
         m_MethodName: StartSpawningFromPathDrawer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1324895167}
+        m_TargetAssemblyTypeName: EnemySpawner, Assembly-CSharp
+        m_MethodName: TriggerNextWave
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -970,12 +982,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 316880907763561823, guid: 025ac89e1c98bf34d868265a3aabe915, type: 3}
   width: 7
-  height: 8
+  height: 7
   tileSize: 0.79
   autoCenter: 1
   gridOrigin: {x: 0, y: 0}
-  startTilePos: {x: 3, y: 0}
-  finishTilePos: {x: 3, y: 7}
+  startTilePos: {x: 6, y: 3}
+  finishTilePos: {x: 0, y: 3}
   pickupPrefab: {fileID: 1823033839947682104, guid: 920593cf6da6e664fbb5621af00133ca, type: 3}
   dropoffPrefab: {fileID: 1823033839947682104, guid: 70a800a662143b44faf32a1ece175bb2, type: 3}
   Resources:
@@ -1162,7 +1174,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.82752085, y: 0.07114816}
   m_AnchorMax: {x: 0.8947708, y: 0.185}
-  m_AnchoredPosition: {x: 0.7121582, y: -0.5350952}
+  m_AnchoredPosition: {x: 0.7121582, y: -0.53515625}
   m_SizeDelta: {x: -3.5584717, y: -0.9523926}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &761967473
@@ -1209,9 +1221,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 469294034}
         m_TargetAssemblyTypeName: PathDrawer, Assembly-CSharp
-        m_MethodName: ResetAllTiles
+        m_MethodName: ResetButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1343,12 +1355,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 42079907741001925, guid: d0cf2914baedc784e95969ed6bfe5e4d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 42079907741001925, guid: d0cf2914baedc784e95969ed6bfe5e4d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 42079907741001925, guid: d0cf2914baedc784e95969ed6bfe5e4d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 42079907741001925, guid: d0cf2914baedc784e95969ed6bfe5e4d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.02
+      value: 3.98
       objectReference: {fileID: 0}
     - target: {fileID: 42079907741001925, guid: d0cf2914baedc784e95969ed6bfe5e4d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.758
+      value: 0.2420001
       objectReference: {fileID: 0}
     - target: {fileID: 42079907741001925, guid: d0cf2914baedc784e95969ed6bfe5e4d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1382,9 +1406,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 42079907741001925, guid: d0cf2914baedc784e95969ed6bfe5e4d, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5387711470694187194, guid: d0cf2914baedc784e95969ed6bfe5e4d, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801610429494361595, guid: d0cf2914baedc784e95969ed6bfe5e4d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d188f740306d19c4182f46b38c24fe67, type: 3}
+    - target: {fileID: 7801610429494361595, guid: d0cf2914baedc784e95969ed6bfe5e4d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801610429494361595, guid: d0cf2914baedc784e95969ed6bfe5e4d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801610429494361595, guid: d0cf2914baedc784e95969ed6bfe5e4d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9132128992823007933, guid: d0cf2914baedc784e95969ed6bfe5e4d, type: 3}
       propertyPath: dropOffLayer.m_Bits
@@ -1773,11 +1817,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 349147860525393324, guid: 70f520c9dd74df34b82de6999886376c, type: 3}
   pathToFollow: []
-  enemiesPerWave: 4
-  timeBetweenWaves: 5
-  timeBetweenEnemy: 0.4
-  totalEnemies: 20
   pathDrawer: {fileID: 469294034}
+  playerController: {fileID: 1198604751}
+  waveManager: {fileID: 11400000, guid: 704a9b5d6211dee4f9c5fc3fae9f1898, type: 2}
+  startWaveButton: {fileID: 366292303}
+  nextWave: 0
 --- !u!4 &1324895168
 Transform:
   m_ObjectHideFlags: 0
