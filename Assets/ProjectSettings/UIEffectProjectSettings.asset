@@ -36,7 +36,11 @@ ShaderVariantCollection:
       variants:
       - keywords: COLOR_FILTER
         passType: 0
+      - keywords: COLOR_FILTER GRADATION_COLOR2
+        passType: 0
       - keywords: COLOR_FILTER SAMPLING_PIXELATION
+        passType: 0
+      - keywords: COLOR_FILTER TRANSITION_SHINY
         passType: 0
       - keywords: GRADATION_COLOR2
         passType: 0
