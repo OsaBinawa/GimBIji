@@ -105,8 +105,10 @@ public class Enemy : MonoBehaviour, IHealth
     void OnReachFinish()
     {
         Debug.Log("Enemy reached the end!");
-        Destroy(gameObject); // Or trigger event
+        OnEnemyDied?.Invoke(this);
+        Destroy(gameObject);
     }
+
 
     private void OnDrawGizmosSelected()
     {

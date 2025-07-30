@@ -194,6 +194,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3260745}
   m_CullTransparentMesh: 1
+--- !u!1 &26228562
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 26228564}
+  - component: {fileID: 26228563}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &26228563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26228562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee045ee2ae8ac304e8619bbcd63aab26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySpawner: {fileID: 1324895167}
+  remainingEnemies: 0
+--- !u!4 &26228564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26228562}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.8360083, y: 0.53070444, z: 0.08339899}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &97326031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -290,7 +336,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.386, y: 0.8467778}
   m_AnchorMax: {x: 0.61285406, y: 0.8886297}
-  m_AnchoredPosition: {x: 1.5, y: -1.5}
+  m_AnchoredPosition: {x: 1.5, y: 6.2316284}
   m_SizeDelta: {x: -337, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &237694632
@@ -1136,7 +1182,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.35139582, y: 0.8858519}
   m_AnchorMax: {x: 0.6316458, y: 0.98770374}
-  m_AnchoredPosition: {x: 16.5, y: 24}
+  m_AnchoredPosition: {x: 16.5, y: 31.731445}
   m_SizeDelta: {x: -441, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &761967471
@@ -1822,6 +1868,7 @@ MonoBehaviour:
   waveManager: {fileID: 11400000, guid: 704a9b5d6211dee4f9c5fc3fae9f1898, type: 2}
   startWaveButton: {fileID: 366292303}
   nextWave: 0
+  aliveEnemies: 0
 --- !u!4 &1324895168
 Transform:
   m_ObjectHideFlags: 0
@@ -3026,3 +3073,4 @@ SceneRoots:
   - {fileID: 97326031}
   - {fileID: 1324895168}
   - {fileID: 1429858502}
+  - {fileID: 26228564}

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour,IHealth
 {
     public float moveSpeed = 3f;
     public int maxResourceHeld = 1;
     [SerializeField]private int heldResourceCount = 0;
-
+    public float CurrentHealth { get; private set; } = 100f;
+    public float MaxHealth { get; private set; } = 100f;
     private Queue<Vector3> pathQueue = new Queue<Vector3>();
     private bool isMoving = false;
     public float detectionRange = 0.1f;
@@ -141,6 +142,22 @@ public class PlayerController : MonoBehaviour
         }
 
         return foundAny;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        Debug.Log($"Enemy took {damage} damage!");
+        CurrentHealth -= damage;
+        if (CurrentHealth <= 0)
+        {
+            Die(); 
+        }
+    }
+    public void Die()
+    {
+        Debug.Log("Tower died.");
+        //TODO : Wave End
+        //Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()
