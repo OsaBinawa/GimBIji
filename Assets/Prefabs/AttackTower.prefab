@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 5195389677519056965}
   m_Layer: 8
   m_Name: AttackTower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

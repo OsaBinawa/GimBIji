@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IHealth
 {
-    private List<GridTile> path = new();
-    private int currentIndex = 1; // Start from second tile
-    public float moveSpeed = 2f;
+    [SerializeField] protected List<GridTile> path = new();
+    [SerializeField] protected int currentIndex = 1; // Start from second tile
+    [SerializeField] protected float moveSpeed = 2f;
 
-    private bool isStopped = false;
-    public float towerCheckRadius = 0.5f;
-    public float attackDelay = 1f;
-    public LayerMask towerLayer;
+    [SerializeField] protected bool isStopped = false;
+    [SerializeField] protected float towerCheckRadius = 0.5f;
+    [SerializeField] protected float attackDelay = 1f;
+    [SerializeField] protected LayerMask towerLayer;
 
-    private bool attacking = false;
-    [SerializeField] private float maxHealth = 100f;
-    [SerializeField] private float currentHealth = 100f;
-    public float MaxHealth => maxHealth;
-    public float CurrentHealth => currentHealth;
+    [SerializeField] protected bool attacking = false;
+    [SerializeField] protected float maxHealth = 100f;
+    [SerializeField] protected float currentHealth = 100f;
+    [SerializeField] protected float Damage;
 
     public delegate void EnemyDeath(Enemy enemy);
     public event EnemyDeath OnEnemyDied;
@@ -66,24 +65,36 @@ public class Enemy : MonoBehaviour, IHealth
         if (!attacking)
             OnReachFinish();
     }
-
-    IEnumerator AttackTower(GameObject tower)
+    protected virtual IEnumerator AttackTower(GameObject tower)
     {
         Debug.Log("Enemy found a tower! Attacking...");
 
-        yield return new WaitForSeconds(attackDelay); // simulate attack delay
+        IHealth towerHealth = tower.GetComponent<IHealth>();
 
-        if (tower != null)
+        while (tower != null && towerHealth != null)
         {
-            // Optional: Call a method on the tower, like TakeDamage()
-            Destroy(tower);
-            Debug.Log("Tower destroyed!");
+            yield return new WaitForSeconds(attackDelay);
+
+            // Double-check if tower still exists and is alive
+            if (tower == null || towerHealth == null)
+                break;
+
+            towerHealth.TakeDamage(Damage);
+            Debug.Log("Enemy damaged the tower!");
+
+            // Optional: check if tower was destroyed inside TakeDamage()
+            if (towerHealth is MonoBehaviour mb && mb == null)
+            {
+                // tower's GameObject was destroyed inside TakeDamage()
+                break;
+            }
         }
 
         attacking = false;
         isStopped = false;
         currentIndex++; // continue walking
     }
+
     public void TakeDamage(float damage)
     {
         Debug.Log($"Enemy took {damage} damage!");

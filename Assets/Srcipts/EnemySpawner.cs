@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public List<GameObject> enemyPrefabs;
+
     public List<GridTile> pathToFollow;
     public PathDrawer pathDrawer;
     public PlayerController playerController;
@@ -46,7 +47,6 @@ public class EnemySpawner : MonoBehaviour
         startWaveButton.interactable = false;
         StartCoroutine(SpawnWaveCoroutine(waveManager.waves[currentWaveIndex]));
     }
-
     IEnumerator SpawnWaveCoroutine(WaveData waveData)
     {
         aliveEnemies = 0;
@@ -59,11 +59,26 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < waveData.enemiesInWave; i++)
         {
-            GameObject enemyObj = Instantiate(enemyPrefab, pathToFollow[0].transform.position, Quaternion.identity);
-            Enemy enemyScript = enemyObj.GetComponent<Enemy>();
-            enemyScript.SetPath(pathToFollow);
+            int typeIndex = 0; // default to first prefab
 
-            enemyScript.OnEnemyDied += HandleEnemyDeath;
+            if (waveData.enemyTypeIndices != null && i < waveData.enemyTypeIndices.Count)
+            {
+                typeIndex = Mathf.Clamp(waveData.enemyTypeIndices[i], 0, enemyPrefabs.Count - 1);
+            }
+
+            GameObject prefabToSpawn = enemyPrefabs[typeIndex];
+            GameObject enemyObj = Instantiate(prefabToSpawn, pathToFollow[0].transform.position, Quaternion.identity);
+
+            Enemy enemyScript = enemyObj.GetComponent<Enemy>();
+            if (enemyScript != null)
+            {
+                enemyScript.SetPath(pathToFollow);
+                enemyScript.OnEnemyDied += HandleEnemyDeath;
+            }
+            else
+            {
+                Debug.LogWarning("Spawned enemy does not have an Enemy script attached.");
+            }
 
             aliveEnemies++;
             yield return new WaitForSeconds(waveData.timeBetweenEnemies);

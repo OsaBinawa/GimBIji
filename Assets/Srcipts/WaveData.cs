@@ -1,6 +1,9 @@
+using System.Collections.Generic;
+
 [System.Serializable]
 public class WaveData
 {
-    public int enemiesInWave = 5;
-    public float timeBetweenEnemies = 1f;
+    public int enemiesInWave;
+    public float timeBetweenEnemies;
+    public List<int> enemyTypeIndices; // Each int corresponds to an index in enemyPrefabs list
 }
