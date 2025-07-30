@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
-public class TowerStats : MonoBehaviour
+public class TowerStats : MonoBehaviour, IHealth
 {
+    public int towerID;
     [SerializeField] private TowerData towerData;
     [SerializeField] private GameObject uiPanel;
     [SerializeField] private float fireRate => towerData.fireRate;
@@ -188,6 +189,20 @@ public class TowerStats : MonoBehaviour
         if (uiPanel != null)
             uiPanel.SetActive(false);
     }
+    public void TakeDamage(float damage)
+    {
+        curHP -= damage;
+        if (curHP <= 0)
+        {
+            Die();
+            Destroy(gameObject);
+        }
+    }
 
+    public void Die()
+    {
+        Debug.Log("Tower died.");
+        Destroy(gameObject);
+    }
 
 }

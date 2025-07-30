@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public List<GameObject> enemyPrefabs;
+
     public List<GridTile> pathToFollow;
     public PathDrawer pathDrawer;
     public PlayerController playerController;
@@ -15,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
 
     private int currentWaveIndex = 0;
     private bool isSpawning = false;
-    [SerializeField] private int aliveEnemies = 0;
+    private int aliveEnemies = 0;
 
     public void StartSpawning(List<GridTile> path)
     {
@@ -46,10 +47,8 @@ public class EnemySpawner : MonoBehaviour
         startWaveButton.interactable = false;
         StartCoroutine(SpawnWaveCoroutine(waveManager.waves[currentWaveIndex]));
     }
-
     IEnumerator SpawnWaveCoroutine(WaveData waveData)
     {
-        GameManager.Instance.StartWave(waveData.totalEnemies);
         aliveEnemies = 0;
 
         if (pathToFollow == null || pathToFollow.Count < 2)
@@ -58,54 +57,54 @@ public class EnemySpawner : MonoBehaviour
             yield break;
         }
 
-        int enemiesSpawned = 0;
-        while (enemiesSpawned < waveData.totalEnemies)
+        for (int i = 0; i < waveData.enemiesInWave; i++)
         {
-            int spawnCount = Mathf.Min(waveData.batchSize, waveData.totalEnemies - enemiesSpawned);
+            int typeIndex = 0; // default to first prefab
 
-            for (int i = 0; i < spawnCount; i++)
+            if (waveData.enemyTypeIndices != null && i < waveData.enemyTypeIndices.Count)
             {
-                GameObject enemyObj = Instantiate(enemyPrefab, pathToFollow[0].transform.position, Quaternion.identity);
-                Enemy enemyScript = enemyObj.GetComponent<Enemy>();
-                enemyScript.SetPath(pathToFollow);
-                enemyScript.OnEnemyDied += HandleEnemyDeath;
-
-                aliveEnemies++;
-                enemiesSpawned++;
-
-                // Add time between enemies if not the last in batch
-                if (i < spawnCount - 1)
-                    yield return new WaitForSeconds(waveData.timeBetweenEnemies);
+                typeIndex = Mathf.Clamp(waveData.enemyTypeIndices[i], 0, enemyPrefabs.Count - 1);
             }
 
-            // Delay between batches (only if more enemies left)
-            if (enemiesSpawned < waveData.totalEnemies)
-                yield return new WaitForSeconds(waveData.delayBetweenBatches);
+            GameObject prefabToSpawn = enemyPrefabs[typeIndex];
+            GameObject enemyObj = Instantiate(prefabToSpawn, pathToFollow[0].transform.position, Quaternion.identity);
+
+            Enemy enemyScript = enemyObj.GetComponent<Enemy>();
+            if (enemyScript != null)
+            {
+                enemyScript.SetPath(pathToFollow);
+                enemyScript.OnEnemyDied += HandleEnemyDeath;
+            }
+            else
+            {
+                Debug.LogWarning("Spawned enemy does not have an Enemy script attached.");
+            }
+
+            aliveEnemies++;
+            yield return new WaitForSeconds(waveData.timeBetweenEnemies);
         }
 
         currentWaveIndex++;
     }
 
-
     private void HandleEnemyDeath(Enemy deadEnemy)
     {
         deadEnemy.OnEnemyDied -= HandleEnemyDeath;
-        GameManager.Instance.NotifyEnemyResolved(deadEnemy);
-    }
+        aliveEnemies--;
 
-    public void OnAllEnemiesDefeated()
-    {
-        if (currentWaveIndex < waveManager.waves.Count)
+        if (aliveEnemies <= 0)
         {
-            StartCoroutine(WaitAndResetPath());
-        }
-        else
-        {
-            Debug.Log("All waves completed.");
-            isSpawning = false;
+            if (currentWaveIndex < waveManager.waves.Count)
+            {
+                StartCoroutine(WaitAndResetPath());
+            }
+            else
+            {
+                Debug.Log("All waves completed.");
+                isSpawning = false;
+            }
         }
     }
-
 
     IEnumerator WaitAndResetPath()
     {
