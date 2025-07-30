@@ -15,7 +15,10 @@ MonoBehaviour:
   waves:
   - enemiesInWave: 4
     timeBetweenEnemies: 0.5
+    enemyTypeIndices: 00000000000000000100000001000000
   - enemiesInWave: 8
     timeBetweenEnemies: 0.5
+    enemyTypeIndices: 
   - enemiesInWave: 12
     timeBetweenEnemies: 0.5
+    enemyTypeIndices: 
