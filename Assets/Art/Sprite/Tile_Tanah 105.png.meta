@@ -185,7 +185,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Tile_Tanah 105_0: 2057177850595428307
+      Tile_Tanah 105_1: -1938157777151643022
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
