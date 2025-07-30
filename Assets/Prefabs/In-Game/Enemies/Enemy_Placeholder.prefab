@@ -159,4 +159,4 @@ MonoBehaviour:
   attacking: 0
   maxHealth: 100
   currentHealth: 100
-  Damage: 5
+  Damage: 100

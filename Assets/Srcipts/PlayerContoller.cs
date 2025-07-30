@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour,IHealth
 
     public void TakeDamage(float damage)
     {
-        Debug.Log($"Enemy took {damage} damage!");
+        Debug.Log($"Player {damage} damage!");
         CurrentHealth -= damage;
         if (CurrentHealth <= 0)
         {
@@ -156,7 +156,7 @@ public class PlayerController : MonoBehaviour,IHealth
     public void Die()
     {
         Debug.Log("Tower died.");
-        //TODO : Wave End
+        GameManager.Instance.GameOver();
         //Destroy(gameObject);
     }
 

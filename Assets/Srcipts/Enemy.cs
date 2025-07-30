@@ -18,8 +18,14 @@ public class Enemy : MonoBehaviour, IHealth
     [SerializeField] protected float currentHealth = 100f;
     [SerializeField] protected float Damage;
 
+    [SerializeField] PlayerController playerController;
     public delegate void EnemyDeath(Enemy enemy);
     public event EnemyDeath OnEnemyDied;
+
+    private void Awake()
+    {
+        playerController = FindAnyObjectByType<PlayerController>();
+    }
 
     public void SetPath(List<GridTile> path)
     {
@@ -102,7 +108,7 @@ public class Enemy : MonoBehaviour, IHealth
         if (currentHealth <= 0)
         {
             Die();
-            OnEnemyDied?.Invoke(this);
+            //OnEnemyDied?.Invoke(this);
             Destroy(gameObject);
         }
     }
@@ -110,12 +116,14 @@ public class Enemy : MonoBehaviour, IHealth
     public void Die()
     {
         Debug.Log("Tower died.");
+        OnEnemyDied?.Invoke(this);
         Destroy(gameObject);
     }
 
     void OnReachFinish()
     {
         Debug.Log("Enemy reached the end!");
+        playerController.TakeDamage(Damage);
         OnEnemyDied?.Invoke(this);
         Destroy(gameObject);
     }

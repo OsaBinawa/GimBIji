@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,9 +14,9 @@ public class EnemySpawner : MonoBehaviour
     public Button startWaveButton;
     public bool nextWave;
 
-    private int currentWaveIndex = 0;
+    [SerializeField]public int currentWaveIndex = 0;
     private bool isSpawning = false;
-    private int aliveEnemies = 0;
+    //private int aliveEnemies = 0;
 
     public void StartSpawning(List<GridTile> path)
     {
@@ -29,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
         }
 
         pathToFollow = new List<GridTile>(path);
-        currentWaveIndex = 0;
+        //currentWaveIndex = 0;
         isSpawning = true;
         ShowStartWaveButton();
     }
@@ -49,50 +49,134 @@ public class EnemySpawner : MonoBehaviour
     }
     IEnumerator SpawnWaveCoroutine(WaveData waveData)
     {
-        aliveEnemies = 0;
+        GameManager.Instance.StartWave(waveData.totalEnemies);
+        //aliveEnemies = 0;
 
-        if (pathToFollow == null || pathToFollow.Count < 2)
+        // Check enemyPrefabs list
+        if (enemyPrefabs == null || enemyPrefabs.Count == 0)
         {
-            Debug.LogWarning("Cannot spawn wave - pathToFollow is invalid.");
+            Debug.LogError("Enemy prefabs list is null or empty.");
             yield break;
         }
 
-        for (int i = 0; i < waveData.enemiesInWave; i++)
+        // Check for null elements in enemyPrefabs
+        for (int i = 0; i < enemyPrefabs.Count; i++)
         {
-            int typeIndex = 0; // default to first prefab
-
-            if (waveData.enemyTypeIndices != null && i < waveData.enemyTypeIndices.Count)
+            if (enemyPrefabs[i] == null)
             {
-                typeIndex = Mathf.Clamp(waveData.enemyTypeIndices[i], 0, enemyPrefabs.Count - 1);
+                Debug.LogError($"Enemy prefab at index {i} is null.");
+                yield break;
+            }
+        }
+
+        // Check pathToFollow
+        if (pathToFollow == null || pathToFollow.Count < 2 || pathToFollow[0] == null)
+        {
+            Debug.LogError("Path to follow is invalid or contains null.");
+            yield break;
+        }
+
+        int enemiesSpawned = 0;
+
+        while (enemiesSpawned < waveData.totalEnemies)
+        {
+            int spawnCount = Mathf.Min(waveData.batchSize, waveData.totalEnemies - enemiesSpawned);
+
+            for (int i = 0; i < spawnCount; i++)
+            {
+                int enemyIndex = enemiesSpawned;
+                int typeIndex = 0;
+
+                // Validate enemyTypeIndices
+                if (waveData.enemyTypeIndices != null)
+                {
+                    if (enemyIndex < waveData.enemyTypeIndices.Count)
+                    {
+                        typeIndex = Mathf.Clamp(waveData.enemyTypeIndices[enemyIndex], 0, enemyPrefabs.Count - 1);
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"enemyTypeIndices missing entry for index {enemyIndex}. Defaulting to 0.");
+                    }
+                }
+
+                // Check typeIndex bounds
+                if (typeIndex < 0 || typeIndex >= enemyPrefabs.Count)
+                {
+                    Debug.LogError($"Invalid typeIndex: {typeIndex}. enemyPrefabs count: {enemyPrefabs.Count}");
+                    yield break;
+                }
+
+                GameObject prefabToSpawn = enemyPrefabs[typeIndex];
+
+                if (prefabToSpawn == null)
+                {
+                    Debug.LogError($"Prefab at index {typeIndex} is null.");
+                    yield break;
+                }
+
+                Vector3 spawnPosition = pathToFollow[0].transform.position;
+                Debug.Log($"[SPAWN] Spawning enemy #{enemiesSpawned} | typeIndex: {typeIndex} | prefab: {prefabToSpawn.name}");
+
+                GameObject enemyObj = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+
+                Enemy enemyScript = enemyObj.GetComponent<Enemy>();
+                if (enemyScript != null)
+                {
+                    enemyScript.SetPath(pathToFollow);
+                    enemyScript.OnEnemyDied += HandleEnemyDeath;
+                }
+                else
+                {
+                    Debug.LogWarning("Spawned enemy does not have an Enemy script attached.");
+                }
+
+                //aliveEnemies++;
+                enemiesSpawned++;
+
+                if (i < spawnCount - 1)
+                    yield return new WaitForSeconds(waveData.timeBetweenEnemies);
             }
 
-            GameObject prefabToSpawn = enemyPrefabs[typeIndex];
-            GameObject enemyObj = Instantiate(prefabToSpawn, pathToFollow[0].transform.position, Quaternion.identity);
-
-            Enemy enemyScript = enemyObj.GetComponent<Enemy>();
-            if (enemyScript != null)
-            {
-                enemyScript.SetPath(pathToFollow);
-                enemyScript.OnEnemyDied += HandleEnemyDeath;
-            }
-            else
-            {
-                Debug.LogWarning("Spawned enemy does not have an Enemy script attached.");
-            }
-
-            aliveEnemies++;
-            yield return new WaitForSeconds(waveData.timeBetweenEnemies);
+            if (enemiesSpawned < waveData.totalEnemies)
+                yield return new WaitForSeconds(waveData.delayBetweenBatches);
         }
 
         currentWaveIndex++;
+        isSpawning = false;
     }
+
+
+    public void OnAllEnemiesDefeated()
+    {
+        if (currentWaveIndex < waveManager.waves.Count)
+        {
+            StartCoroutine(WaitAndResetPath());
+        }
+        else
+        {
+            Debug.Log("All waves completed.");
+            isSpawning = false;
+        }
+    }
+
 
     private void HandleEnemyDeath(Enemy deadEnemy)
     {
         deadEnemy.OnEnemyDied -= HandleEnemyDeath;
-        aliveEnemies--;
+        //aliveEnemies--;
 
-        if (aliveEnemies <= 0)
+        // 🔥 FIX: Notify the GameManager
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.NotifyEnemyResolved(deadEnemy);
+        }
+        else
+        {
+            Debug.LogWarning("GameManager.Instance is null in HandleEnemyDeath");
+        }
+
+        /*if (aliveEnemies <= 0)
         {
             if (currentWaveIndex < waveManager.waves.Count)
             {
@@ -103,8 +187,9 @@ public class EnemySpawner : MonoBehaviour
                 Debug.Log("All waves completed.");
                 isSpawning = false;
             }
-        }
+        }*/
     }
+
 
     IEnumerator WaitAndResetPath()
     {

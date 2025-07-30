@@ -124,7 +124,7 @@ public class PathDrawer : MonoBehaviour
     bool IsAdjacent(Vector2Int a, Vector2Int b)
     {
         int dx = Mathf.Abs(a.x - b.x);
-        int dy = Mathf.Abs(a.y - b.y);
+        int dy = Mathf.Abs(a.y - b.y);  
         return (dx + dy == 1); // Only allow cardinal directions
     }
 

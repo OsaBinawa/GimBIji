@@ -1861,14 +1861,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8e822fa8e5035b43a1383c224102eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 349147860525393324, guid: 70f520c9dd74df34b82de6999886376c, type: 3}
+  enemyPrefabs:
+  - {fileID: 349147860525393324, guid: 70f520c9dd74df34b82de6999886376c, type: 3}
+  - {fileID: 7978049345023305380, guid: 2b7720c99a093624999518fe32151a97, type: 3}
   pathToFollow: []
   pathDrawer: {fileID: 469294034}
   playerController: {fileID: 1198604751}
   waveManager: {fileID: 11400000, guid: 704a9b5d6211dee4f9c5fc3fae9f1898, type: 2}
   startWaveButton: {fileID: 366292303}
   nextWave: 0
-  aliveEnemies: 0
 --- !u!4 &1324895168
 Transform:
   m_ObjectHideFlags: 0
