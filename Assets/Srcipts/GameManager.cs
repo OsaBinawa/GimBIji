@@ -1,3 +1,4 @@
+﻿using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,25 +39,26 @@ public class GameManager : MonoBehaviour
         }
     }*/
 
-    public bool TryPlaceTower()
+    public bool CanPlaceTower()
     {
-        if (currentTowerCount >= maxTowersAllowed)
-        {
-            Debug.Log("Cannot place more towers. Limit reached!");
-            return false;
-        }
+        return currentTowerCount < maxTowersAllowed;
+    }
 
+    // ✅ Register a tower after it is successfully placed
+    public void RegisterPlacedTower()
+    {
         currentTowerCount++;
-        TowerBar.value = currentTowerCount;
+        TowerBar.DOValue(currentTowerCount, 1)
+                .SetEase(Ease.OutSine);
         updateUI();
         Debug.Log("Tower placed. Total: " + currentTowerCount);
-        return true;
     }
     public void RemoveTower()
     {
         currentTowerCount = Mathf.Max(0, currentTowerCount - 1);
         updateUI();
-        TowerBar.value = currentTowerCount;
+        TowerBar.DOValue(currentTowerCount, 1)
+                .SetEase(Ease.OutSine);
         Debug.Log("Tower removed. Total: " + currentTowerCount);
     }
 
