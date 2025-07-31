@@ -42,6 +42,8 @@ ShaderVariantCollection:
         passType: 0
       - keywords: COLOR_FILTER SAMPLING_PIXELATION
         passType: 0
+      - keywords: COLOR_FILTER TRANSITION_MASK
+        passType: 0
       - keywords: COLOR_FILTER TRANSITION_SHINY
         passType: 0
       - keywords: GRADATION_COLOR2
