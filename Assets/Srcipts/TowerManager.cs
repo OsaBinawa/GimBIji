@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerManager : MonoBehaviour
@@ -5,6 +6,9 @@ public class TowerManager : MonoBehaviour
     public static TowerManager Instance;
 
     public TowerData SelectedTowerData { get; private set; }
+
+    [Header("Towers Available To Player")]
+    public List<TowerData> availableTowers = new(); // Assign in Inspector or dynamically
 
     private void Awake()
     {
