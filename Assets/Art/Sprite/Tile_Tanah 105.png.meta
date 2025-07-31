@@ -133,9 +133,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 417
-        width: 630
-        height: 318
+        y: 630
+        width: 105
+        height: 105
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,10 +154,10 @@ TextureImporter:
       name: Tile_Tanah 105_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 630
-        height: 318
+        x: 105
+        y: 630
+        width: 105
+        height: 105
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,11 +172,759 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_2
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 630
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52970da669dd0cf4ab9c715399079a9e
+      internalID: 245679588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_3
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 630
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e270c7bfd451344d84a5cdeca5a71f7
+      internalID: -1313166481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_4
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 630
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54272a4eb65f32643abb24eae283840d
+      internalID: -1537030557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_5
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 630
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b4e72afd9975044fa65adcf67639555
+      internalID: 1224773835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 525
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b197fa232572624d8fb39d36009a251
+      internalID: -82655006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_7
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 525
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1706c3064ba6684bbe08fc1d84f02c0
+      internalID: 780686792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_8
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 525
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61ed420192ff3084eae8b2aebb6388fa
+      internalID: -1622331494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_9
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 525
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0f479e7d23150a488459ca3dc79d82c
+      internalID: 547128226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_10
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 525
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be039a630f65fb74eb07a1c9003b7f76
+      internalID: 1755160265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_11
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 525
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4507319af4946d4eaff0543a5d226af
+      internalID: 285856597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 420
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73e4c75434440d74bb896d07b11b6632
+      internalID: -372112596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_13
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 420
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2ace1c0e76f98344a89b60daa881dcf
+      internalID: -635882417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_14
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 420
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6c156428fec46f49895a54db5013326
+      internalID: -1785168056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_15
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 420
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfe072393208c2341949ededa16133a4
+      internalID: 1383413827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_16
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 420
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27148151d34971f47a0621c714ec6ae9
+      internalID: -623320835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_17
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 420
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80b90f39989aeca47ad38dba2ad99690
+      internalID: -913040288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 210
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8fe3349d23c69b4290a12c780803e61
+      internalID: 1789717734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_25
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 210
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e706e638b540924a966cdde8588b771
+      internalID: 2005851884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_26
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 210
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5425b454f720694aa583061218eb62d
+      internalID: 1701906872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_27
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 210
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e2a3eb28e5504e40b9387322ddcd6f6
+      internalID: 721246191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_28
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 210
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb0026cf7eb8afd4eb0523bafaf7fda2
+      internalID: -209222303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_29
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 210
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ae013aa24e48054fa00979c8137a6a2
+      internalID: 1242365385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 105
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f93743b32969894db31ae5713db65f9
+      internalID: 1584153780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_31
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 105
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c732fb0a0592b2e4ebe501943741e8f9
+      internalID: 637603033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_32
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 105
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6b4d81dc7e88c547a56e7df18025fa6
+      internalID: -1642197871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_33
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 105
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b67b6f52bbdd7b1498b3154f55bec82d
+      internalID: -190478660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_34
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 105
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8037e47b044a9044aca568c0f8d7d91
+      internalID: -913314580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_35
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 105
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1cc7d48e56730d43948edf9f9967dfe
+      internalID: -326326995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2db08d314eb9ffd4188b161693983109
+      internalID: 452302514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_37
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 0
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86cf56c3b22a7604e9d5aff00f481682
+      internalID: -1557072075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_38
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 0
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 788197f49c3b2bd4fbfa35fffd651a17
+      internalID: -1791565938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_39
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 0
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41435226175a77a4195ba5346eb57846
+      internalID: -1182539130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_40
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 0
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caddc93a57cb4454898737bf93ba4691
+      internalID: -1639070480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tile_Tanah 105_41
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 0
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f666cd2c72ad2864aa6c2cf2c4df3239
+      internalID: 128927818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 82ae1e37fd18297488b40bc1c196186f
     internalID: 0
     vertices: []
     indices: 
@@ -188,6 +936,46 @@ TextureImporter:
     nameFileIdTable:
       Tile_Tanah 105_0: 2057177850595428307
       Tile_Tanah 105_1: -1938157777151643022
+      Tile_Tanah 105_10: 1755160265
+      Tile_Tanah 105_11: 285856597
+      Tile_Tanah 105_12: -372112596
+      Tile_Tanah 105_13: -635882417
+      Tile_Tanah 105_14: -1785168056
+      Tile_Tanah 105_15: 1383413827
+      Tile_Tanah 105_16: -623320835
+      Tile_Tanah 105_17: -913040288
+      Tile_Tanah 105_18: -740442392
+      Tile_Tanah 105_19: 1273041651
+      Tile_Tanah 105_2: 245679588
+      Tile_Tanah 105_20: 1280745930
+      Tile_Tanah 105_21: 1514341286
+      Tile_Tanah 105_22: -118463164
+      Tile_Tanah 105_23: 358345678
+      Tile_Tanah 105_24: 1789717734
+      Tile_Tanah 105_25: 2005851884
+      Tile_Tanah 105_26: 1701906872
+      Tile_Tanah 105_27: 721246191
+      Tile_Tanah 105_28: -209222303
+      Tile_Tanah 105_29: 1242365385
+      Tile_Tanah 105_3: -1313166481
+      Tile_Tanah 105_30: 1584153780
+      Tile_Tanah 105_31: 637603033
+      Tile_Tanah 105_32: -1642197871
+      Tile_Tanah 105_33: -190478660
+      Tile_Tanah 105_34: -913314580
+      Tile_Tanah 105_35: -326326995
+      Tile_Tanah 105_36: 452302514
+      Tile_Tanah 105_37: -1557072075
+      Tile_Tanah 105_38: -1791565938
+      Tile_Tanah 105_39: -1182539130
+      Tile_Tanah 105_4: -1537030557
+      Tile_Tanah 105_40: -1639070480
+      Tile_Tanah 105_41: 128927818
+      Tile_Tanah 105_5: 1224773835
+      Tile_Tanah 105_6: -82655006
+      Tile_Tanah 105_7: 780686792
+      Tile_Tanah 105_8: -1622331494
+      Tile_Tanah 105_9: 547128226
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

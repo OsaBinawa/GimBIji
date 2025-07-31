@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,9 +9,12 @@ public class GameManager : MonoBehaviour
     EnemySpawner enemySpawner; 
     PlayerController playerController;
 
+    [SerializeField] Slider TowerBar;
+    [SerializeField] TMP_Text TowerCountText;
     [SerializeField] private int remainingEnemies = 0;
-    
-    
+
+    public int maxTowersAllowed = 5; 
+    private int currentTowerCount = 0;
     void Awake()
     {
         Time.timeScale = 1f;
@@ -17,6 +22,11 @@ public class GameManager : MonoBehaviour
         else Destroy(gameObject);
         playerController = FindAnyObjectByType<PlayerController>();
         enemySpawner = FindAnyObjectByType<EnemySpawner>();
+
+        TowerBar.value = currentTowerCount;
+        TowerBar.maxValue = maxTowersAllowed;
+
+        TowerCountText.text = $"{currentTowerCount} / {maxTowersAllowed}";
     }
     /*private void Update()
     {
@@ -27,6 +37,28 @@ public class GameManager : MonoBehaviour
             Debug.Log($"[DEBUG] Current Wave: {index + 1} / {total}");
         }
     }*/
+
+    public bool TryPlaceTower()
+    {
+        if (currentTowerCount >= maxTowersAllowed)
+        {
+            Debug.Log("Cannot place more towers. Limit reached!");
+            return false;
+        }
+
+        currentTowerCount++;
+        TowerBar.value = currentTowerCount;
+        updateUI();
+        Debug.Log("Tower placed. Total: " + currentTowerCount);
+        return true;
+    }
+    public void RemoveTower()
+    {
+        currentTowerCount = Mathf.Max(0, currentTowerCount - 1);
+        updateUI();
+        TowerBar.value = currentTowerCount;
+        Debug.Log("Tower removed. Total: " + currentTowerCount);
+    }
 
     public void StartWave(int totalEnemies)
     {
@@ -49,6 +81,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void updateUI()
+    {
+        TowerCountText.text = $"{currentTowerCount} / {maxTowersAllowed}";
+    }
     public void GameOver()
     {
         if (playerController.CurrentHealth <= 0)
