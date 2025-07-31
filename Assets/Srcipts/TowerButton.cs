@@ -10,6 +10,7 @@ public class TowerButton : MonoBehaviour
     [Header("Cooldown Settings")]
     [SerializeField] private float towerCooldown = 2f; // different per tower
     [SerializeField] private Image cooldownOverlay; // UI Image (filled type)
+    public Image towerIcon;
 
     private GameObject previewObject;
     private bool isPlacing = false;
@@ -62,6 +63,7 @@ public class TowerButton : MonoBehaviour
         }
 
         isPlacing = true;
+        
         Debug.Log("Started placing tower: " + towerToSelect.name);
     }
 
@@ -121,6 +123,7 @@ public class TowerButton : MonoBehaviour
 
         // 6️⃣ Reset placement state
         isPlacing = false;
+        StartCooldown();
         DestroyPreview();
     }
 

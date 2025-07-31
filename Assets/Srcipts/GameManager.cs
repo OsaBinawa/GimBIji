@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
 
     EnemySpawner enemySpawner; 
     PlayerController playerController;
-
+    public Slider WaveSlider;
+    public float animationDuration = 0.5f;
     [SerializeField] Slider TowerBar;
     [SerializeField] TMP_Text TowerCountText;
     [SerializeField] private int remainingEnemies = 0;
@@ -26,7 +27,7 @@ public class GameManager : MonoBehaviour
 
         TowerBar.value = currentTowerCount;
         TowerBar.maxValue = maxTowersAllowed;
-
+        WaveSlider.DOValue(enemySpawner.currentWaveIndex + 1,1);
         TowerCountText.text = $"{currentTowerCount} / {maxTowersAllowed}";
     }
     /*private void Update()
@@ -38,6 +39,11 @@ public class GameManager : MonoBehaviour
             Debug.Log($"[DEBUG] Current Wave: {index + 1} / {total}");
         }
     }*/
+
+    public void UpdateWaveUI()
+    {
+        WaveSlider.DOValue(enemySpawner.currentWaveIndex + 1, 1);
+    }
 
     public bool CanPlaceTower()
     {
