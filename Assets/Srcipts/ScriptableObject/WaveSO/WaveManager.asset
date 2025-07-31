@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: WaveManager
   m_EditorClassIdentifier: 
   waves:
-  - totalEnemies: 20
+  - totalEnemies: 6
     batchSize: 4
     timeBetweenEnemies: 0.5
     delayBetweenBatches: 1
-    enemyTypeIndices: 00000000000000000100000001000000
+    enemyTypeIndices: 020000000200000002000000020000000200000002000000
   - totalEnemies: 21
     batchSize: 5
     timeBetweenEnemies: 0.5
