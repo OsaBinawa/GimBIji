@@ -8,6 +8,7 @@ TagManager:
   - DropOff
   - Enemy
   - Tower
+  - Tile
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - Resource
   - DropOff
   - Enemy
-  - 
-  - 
+  - Musuh
+  - Tile
   - 
   - 
   - 
