@@ -20,8 +20,11 @@ public class TowerButtonSpawner : MonoBehaviour
             towerButton.towerToSelect = towerData;
 
             // Optional UI setup
-            Image icon = btn.GetComponentInChildren<Image>();
-            if (icon != null) icon.sprite = towerData.icon;
+            TowerButton tb = btn.GetComponent<TowerButton>();
+            if (tb != null && tb.towerIcon != null)
+            {
+                tb.towerIcon.sprite = towerData.icon;
+            }
 
             Text label = btn.GetComponentInChildren<Text>();
             if (label != null) label.text = towerData.Name;

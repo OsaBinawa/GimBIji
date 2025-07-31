@@ -1,3 +1,4 @@
+﻿using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +9,8 @@ public class GameManager : MonoBehaviour
 
     EnemySpawner enemySpawner; 
     PlayerController playerController;
-
+    public Slider WaveSlider;
+    public float animationDuration = 0.5f;
     [SerializeField] Slider TowerBar;
     [SerializeField] TMP_Text TowerCountText;
     [SerializeField] private int remainingEnemies = 0;
@@ -25,7 +27,7 @@ public class GameManager : MonoBehaviour
 
         TowerBar.value = currentTowerCount;
         TowerBar.maxValue = maxTowersAllowed;
-
+        WaveSlider.DOValue(enemySpawner.currentWaveIndex + 1,1);
         TowerCountText.text = $"{currentTowerCount} / {maxTowersAllowed}";
     }
     /*private void Update()
@@ -38,25 +40,31 @@ public class GameManager : MonoBehaviour
         }
     }*/
 
-    public bool TryPlaceTower()
+    public void UpdateWaveUI()
     {
-        if (currentTowerCount >= maxTowersAllowed)
-        {
-            Debug.Log("Cannot place more towers. Limit reached!");
-            return false;
-        }
+        WaveSlider.DOValue(enemySpawner.currentWaveIndex + 1, 1);
+    }
 
+    public bool CanPlaceTower()
+    {
+        return currentTowerCount < maxTowersAllowed;
+    }
+
+    // ✅ Register a tower after it is successfully placed
+    public void RegisterPlacedTower()
+    {
         currentTowerCount++;
-        TowerBar.value = currentTowerCount;
+        TowerBar.DOValue(currentTowerCount, 1)
+                .SetEase(Ease.OutSine);
         updateUI();
         Debug.Log("Tower placed. Total: " + currentTowerCount);
-        return true;
     }
     public void RemoveTower()
     {
         currentTowerCount = Mathf.Max(0, currentTowerCount - 1);
         updateUI();
-        TowerBar.value = currentTowerCount;
+        TowerBar.DOValue(currentTowerCount, 1)
+                .SetEase(Ease.OutSine);
         Debug.Log("Tower removed. Total: " + currentTowerCount);
     }
 

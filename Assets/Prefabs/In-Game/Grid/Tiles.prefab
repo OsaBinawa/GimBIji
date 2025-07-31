@@ -124,24 +124,25 @@ MonoBehaviour:
   - {fileID: 1020440191, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
   randomBasedSprite: 0
   pathSprites:
-  - {fileID: -1056857244, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
-  - {fileID: -1173869591, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
-  - {fileID: 2091687880, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
-  - {fileID: 857986831, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
-  - {fileID: -58669326, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
-  - {fileID: 1523842474, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
-  - {fileID: -558563772, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
-  - {fileID: 1803203652, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
-  - {fileID: 2051127891, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
-  - {fileID: 534378072, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
-  - {fileID: 939771242, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
-  - {fileID: 300893456, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
-  - {fileID: 1786913153, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
-  - {fileID: 782585268, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
-  - {fileID: -617406075, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
-  - {fileID: -491685901, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
-  - {fileID: 1579997649, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
-  - {fileID: -35051294, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  - {fileID: 2057177850595428307, guid: 587ea3a97aef25d4c8b9b3fcc441b047, type: 3}
+  - {fileID: -1938157777151643022, guid: 587ea3a97aef25d4c8b9b3fcc441b047, type: 3}
+  - {fileID: 245679588, guid: 587ea3a97aef25d4c8b9b3fcc441b047, type: 3}
+  - {fileID: -1313166481, guid: 587ea3a97aef25d4c8b9b3fcc441b047, type: 3}
+  - {fileID: -1537030557, guid: 587ea3a97aef25d4c8b9b3fcc441b047, type: 3}
+  - {fileID: 1224773835, guid: 587ea3a97aef25d4c8b9b3fcc441b047, type: 3}
+  - {fileID: -82655006, guid: 587ea3a97aef25d4c8b9b3fcc441b047, type: 3}
+  - {fileID: 780686792, guid: 587ea3a97aef25d4c8b9b3fcc441b047, type: 3}
+  - {fileID: -1622331494, guid: 587ea3a97aef25d4c8b9b3fcc441b047, type: 3}
+  - {fileID: 547128226, guid: 587ea3a97aef25d4c8b9b3fcc441b047, type: 3}
+  - {fileID: 1755160265, guid: 587ea3a97aef25d4c8b9b3fcc441b047, type: 3}
+  - {fileID: 285856597, guid: 587ea3a97aef25d4c8b9b3fcc441b047, type: 3}
+  - {fileID: -372112596, guid: 587ea3a97aef25d4c8b9b3fcc441b047, type: 3}
+  - {fileID: -635882417, guid: 587ea3a97aef25d4c8b9b3fcc441b047, type: 3}
+  - {fileID: -1785168056, guid: 587ea3a97aef25d4c8b9b3fcc441b047, type: 3}
+  - {fileID: 1383413827, guid: 587ea3a97aef25d4c8b9b3fcc441b047, type: 3}
+  - {fileID: -623320835, guid: 587ea3a97aef25d4c8b9b3fcc441b047, type: 3}
+  - {fileID: -913040288, guid: 587ea3a97aef25d4c8b9b3fcc441b047, type: 3}
+  occupyingObject: {fileID: 0}
 --- !u!61 &5901799831754065246
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -141,8 +141,9 @@ public class EnemySpawner : MonoBehaviour
             if (enemiesSpawned < waveData.totalEnemies)
                 yield return new WaitForSeconds(waveData.delayBetweenBatches);
         }
-
+        
         currentWaveIndex++;
+        GameManager.Instance.UpdateWaveUI();
         isSpawning = false;
     }
 
