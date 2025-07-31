@@ -4983,7 +4983,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee045ee2ae8ac304e8619bbcd63aab26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TowerBar: {fileID: 309320471}
+  TowerCountText: {fileID: 77881639}
   remainingEnemies: 0
+  maxTowersAllowed: 5
 --- !u!4 &26228564
 Transform:
   m_ObjectHideFlags: 0
@@ -5460,6 +5463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83582b6e164a60e40b4ef1682790440a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSelectingTile: 0
 --- !u!1 &309320469
 GameObject:
   m_ObjectHideFlags: 0
@@ -5599,6 +5603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83582b6e164a60e40b4ef1682790440a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSelectingTile: 0
 --- !u!114 &346379149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7397,6 +7402,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   availableTowers:
   - {fileID: 11400000, guid: 0babd7d0e6a9c7d4cb68ffe72d00095c, type: 2}
+  - {fileID: 11400000, guid: c48e52560fadeae408073cf65d5c2e08, type: 2}
+  - {fileID: 11400000, guid: f347642af35f984499c0dea537800f0e, type: 2}
+  - {fileID: 11400000, guid: 38c28ff699ffa7e4090bda367352805d, type: 2}
 --- !u!4 &1398449256
 Transform:
   m_ObjectHideFlags: 0

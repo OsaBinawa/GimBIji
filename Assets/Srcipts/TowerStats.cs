@@ -5,13 +5,13 @@ public class TowerStats : MonoBehaviour, IHealth
     public int towerID;
     [SerializeField] private TowerData towerData;
     [SerializeField] private GameObject uiPanel;
-    [SerializeField] private float fireRate => towerData.fireRate;
+    [SerializeField] protected float fireRate => towerData.fireRate;
     [SerializeField] private float maxHP => towerData.HP;
     [SerializeField] private float dmg => towerData.Damage;
     [SerializeField] private float curHP;
-    [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Transform firePoint;
-    [SerializeField] private float cooldown;
+    [SerializeField] protected GameObject projectilePrefab;
+    [SerializeField] protected Transform firePoint;
+    [SerializeField] protected float cooldown;
     private Vector2Int facingDirection = Vector2Int.up;
 
     public GridManager gridManager;
@@ -124,7 +124,7 @@ public class TowerStats : MonoBehaviour, IHealth
         }
     }
 
-    void Shoot(Vector3 targetPosition)
+    protected virtual void Shoot(Vector3 targetPosition)
     {
         if (Time.time < cooldown) return;
 

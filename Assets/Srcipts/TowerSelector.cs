@@ -4,6 +4,14 @@ using UnityEngine.EventSystems;
 public class TowerSelector : MonoBehaviour
 {
     private TowerStats selectedTower;
+    public static TowerSelector Instance;
+
+    public bool isSelectingTile;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Update()
     {
@@ -27,7 +35,11 @@ public class TowerSelector : MonoBehaviour
                 }
             }
 
-            DeselectTower();
+            if (!isSelectingTile)
+            {
+
+                DeselectTower();
+            }
         }
     }
 

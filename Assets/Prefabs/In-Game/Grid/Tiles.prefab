@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4447899838380745971}
   - component: {fileID: 7207158823261998557}
   - component: {fileID: 5901799831754065246}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tiles
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,6 +142,7 @@ MonoBehaviour:
   - {fileID: -491685901, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
   - {fileID: 1579997649, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
   - {fileID: -35051294, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
+  occupyingObject: {fileID: 0}
 --- !u!61 &5901799831754065246
 BoxCollider2D:
   m_ObjectHideFlags: 0
