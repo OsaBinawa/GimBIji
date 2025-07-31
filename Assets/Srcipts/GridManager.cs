@@ -16,6 +16,7 @@ public class ResoucePosition
 
 public class GridManager : MonoBehaviour
 {
+    public static GridManager instance;
     public GameObject tilePrefab;
     public int width = 10;
     public int height = 10;
@@ -33,6 +34,10 @@ public class GridManager : MonoBehaviour
 
     private GridTile[,] grid;
 
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -99,6 +104,22 @@ public class GridManager : MonoBehaviour
             }
         }
     }
+
+    public Vector2Int GetGridPositionFromWorld(Vector3 worldPosition)
+    {
+        Vector2 origin = autoCenter
+            ? new Vector2(-width * tileSize / 2f + tileSize / 2f,
+                          -height * tileSize / 2f + tileSize / 2f)
+            : gridOrigin;
+
+        Vector2 local = new Vector2(worldPosition.x, worldPosition.y) - origin;
+
+        int x = Mathf.RoundToInt(local.x / tileSize);
+        int y = Mathf.RoundToInt(local.y / tileSize);
+
+        return new Vector2Int(x, y);
+    }
+
 
     void SetTileType(Vector2Int pos, TileType type)
     {
