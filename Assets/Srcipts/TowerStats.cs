@@ -71,7 +71,7 @@ public class TowerStats : MonoBehaviour, IHealth
                 Debug.LogWarning("Tile was null during tower destruction.");
             }
         }
-
+        GameManager.Instance.RemoveTower();
         Destroy(this.gameObject);
     }
 

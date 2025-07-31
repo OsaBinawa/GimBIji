@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class TowerButton : MonoBehaviour
@@ -82,6 +82,13 @@ public class TowerButton : MonoBehaviour
 
     private void TryPlaceTower()
     {
+        if (!GameManager.Instance.TryPlaceTower()) 
+        {
+            Debug.Log("Tower limit reached, cannot place.");
+            return;
+        }
+
+       
         Vector3 worldClick = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         worldClick.z = 0;
         Vector2Int gridPos = gridManager.GetGridPositionFromWorld(worldClick);
