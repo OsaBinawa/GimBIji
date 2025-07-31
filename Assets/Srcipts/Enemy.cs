@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour, IHealth
     [SerializeField] protected float maxHealth = 100f;
     [SerializeField] protected float currentHealth = 100f;
     [SerializeField] protected float Damage;
+    protected bool shouldSkipAttack = false;
+
 
     [SerializeField] PlayerController playerController;
     public delegate void EnemyDeath(Enemy enemy);
@@ -39,7 +41,6 @@ public class Enemy : MonoBehaviour, IHealth
 
     public void Stop() => isStopped = true;
     public void Resume() => isStopped = false;
-
     IEnumerator FollowPath()
     {
         while (currentIndex < path.Count)
@@ -52,12 +53,12 @@ public class Enemy : MonoBehaviour, IHealth
                 {
                     transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
 
-                    // Check for nearby tower while moving
                     Collider2D hit = Physics2D.OverlapCircle(transform.position, towerCheckRadius, towerLayer);
                     if (hit != null)
                     {
                         isStopped = true;
                         attacking = true;
+                        shouldSkipAttack = false;
                         StartCoroutine(AttackTower(hit.gameObject));
                     }
                 }
@@ -65,12 +66,17 @@ public class Enemy : MonoBehaviour, IHealth
             }
 
             if (!attacking)
-                currentIndex++;
+            {
+                // only move to next path tile if we finished attack or skipped it
+                if (shouldSkipAttack || !attacking)
+                    currentIndex++;
+            }
         }
 
         if (!attacking)
             OnReachFinish();
     }
+
     protected virtual IEnumerator AttackTower(GameObject tower)
     {
         Debug.Log("Enemy found a tower! Attacking...");

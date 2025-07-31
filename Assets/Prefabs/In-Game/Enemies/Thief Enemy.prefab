@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2312215080133276213
+--- !u!1 &3305642194255371509
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,71 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4896367995100694946}
+  - component: {fileID: 4042982871963284845}
+  - component: {fileID: 8147476343194487218}
+  - component: {fileID: 4612360285297624845}
+  - component: {fileID: 77074784402642578}
   m_Layer: 0
-  m_Name: firePoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4896367995100694946
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2312215080133276213}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.79, y: 0.47, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3408538088490122353}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7978049345023305380
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3408538088490122353}
-  - component: {fileID: 6665221134943900067}
-  - component: {fileID: 3618044069641705962}
-  - component: {fileID: -2215618415358962718}
-  m_Layer: 0
-  m_Name: Ranged Enemy
+  m_Name: Thief Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3408538088490122353
+--- !u!4 &4042982871963284845
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7978049345023305380}
+  m_GameObject: {fileID: 3305642194255371509}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.45, y: 0.57356775, z: 0}
-  m_LocalScale: {x: 0.17799, y: 0.17799, z: 0.17799}
+  m_LocalPosition: {x: 10.731, y: 0.304, z: 0}
+  m_LocalScale: {x: 0.46083, y: 0.46083, z: 0.46083}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4896367995100694946}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6665221134943900067
+--- !u!212 &8147476343194487218
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7978049345023305380}
+  m_GameObject: {fileID: 3305642194255371509}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -110,54 +78,24 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: -712631045867808456, guid: b670ab75dde984907b8570040daa08c5, type: 3}
+  m_Color: {r: 1, g: 0.82157975, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1, y: 0.8828125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3618044069641705962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7978049345023305380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb6210b9c9fa47a40b4c86e95508d3d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  path: []
-  currentIndex: 1
-  moveSpeed: 1
-  isStopped: 0
-  towerCheckRadius: 1
-  attackDelay: 1
-  towerLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  attacking: 0
-  maxHealth: 100
-  currentHealth: 100
-  Damage: 100
-  playerController: {fileID: 0}
-  attackRange: 2
-  projectilePrefab: {fileID: 5205176443788537979, guid: 5f2b3e223ed6fda46ac331ef6d1fb652, type: 3}
-  firePoint: {fileID: 4896367995100694946}
-  priorityIDs: 
---- !u!61 &-2215618415358962718
+--- !u!61 &4612360285297624845
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7978049345023305380}
+  m_GameObject: {fileID: 3305642194255371509}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -189,11 +127,38 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 2}
-    newSize: {x: 1, y: 2}
+    oldSize: {x: 1, y: 0.8828125}
+    newSize: {x: 1, y: 0.8828125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1, y: 0.8828125}
   m_EdgeRadius: 0
+--- !u!114 &77074784402642578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3305642194255371509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9aa386f72917cb46afdce4e2f7b0a1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: []
+  currentIndex: 1
+  moveSpeed: 1
+  isStopped: 0
+  towerCheckRadius: 0.5
+  attackDelay: 1
+  towerLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  attacking: 0
+  maxHealth: 100
+  currentHealth: 100
+  Damage: 100
+  playerController: {fileID: 0}
+  walkThroughTowerIDs: 00000000
