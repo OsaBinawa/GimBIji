@@ -62,6 +62,13 @@ public class TowerButton : MonoBehaviour
             return;
         }
 
+        //tutorial line
+        if(TutorialManager.Instance != null)
+        {
+            TutorialManager.Instance.NotifyClicked();
+            TutorialManager.Instance.Show(false);
+        }
+
         isPlacing = true;
         
         Debug.Log("Started placing tower: " + towerToSelect.name);
@@ -125,6 +132,13 @@ public class TowerButton : MonoBehaviour
         isPlacing = false;
         StartCooldown();
         DestroyPreview();
+
+        //tutorial line
+        if (TutorialManager.Instance != null)
+        {
+            TutorialManager.Instance.NotifyClicked();
+            TutorialManager.Instance.Show(false);
+        }
     }
 
 

@@ -16,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField]public int currentWaveIndex = 0;
     private bool isSpawning = false;
+    public bool playerReachEnd;
     //private int aliveEnemies = 0;
 
     public void StartSpawning(List<GridTile> path)
@@ -33,19 +34,29 @@ public class EnemySpawner : MonoBehaviour
         isSpawning = true;
         ShowStartWaveButton();
     }
+    public void playerEnd(bool End)
+    {
+        playerReachEnd = End;
+    }
 
     public void StartSpawningFromPathDrawer()
     {
-        Debug.Log("StartSpawningFromPathDrawer called.");
-        StartSpawning(pathDrawer.pathTiles);
+        if (playerReachEnd)
+        {
+            Debug.Log("StartSpawningFromPathDrawer called.");
+            StartSpawning(pathDrawer.pathTiles);
+        }
     }
 
     public void TriggerNextWave()
     {
-        if (!isSpawning || currentWaveIndex >= waveManager.waves.Count) return;
+        if (playerReachEnd)
+        {
+            if (!isSpawning || currentWaveIndex >= waveManager.waves.Count) return;
 
-        startWaveButton.interactable = false;
-        StartCoroutine(SpawnWaveCoroutine(waveManager.waves[currentWaveIndex]));
+            startWaveButton.interactable = false;
+            StartCoroutine(SpawnWaveCoroutine(waveManager.waves[currentWaveIndex]));
+        }
     }
     IEnumerator SpawnWaveCoroutine(WaveData waveData)
     {
