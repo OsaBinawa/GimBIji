@@ -235,13 +235,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b37f2016669b1d478ab9d436a470a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerID: 0
+  towerID: 1
   towerData: {fileID: 11400000, guid: c48e52560fadeae408073cf65d5c2e08, type: 2}
   uiPanel: {fileID: 8586128152865743670}
   curHP: 0
   projectilePrefab: {fileID: 8540980220111973486, guid: 3148d9a16779bf24b8376bb7f6c589e8, type: 3}
   firePoint: {fileID: 5038831831164302886}
   cooldown: 0
+  highlightedTiles: []
   gridManager: {fileID: 0}
   currentGridPosition: {x: 0, y: 0}
 --- !u!61 &5195389677519056965
@@ -281,7 +282,7 @@ BoxCollider2D:
   m_Offset: {x: -0.008474588, y: 0.31920904}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.44700584, y: 0.21988802}
     oldSize: {x: 1.11, y: 1.11}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5

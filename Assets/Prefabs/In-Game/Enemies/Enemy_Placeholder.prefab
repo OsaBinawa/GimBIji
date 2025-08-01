@@ -151,7 +151,7 @@ MonoBehaviour:
   currentIndex: 1
   moveSpeed: 1
   isStopped: 0
-  towerCheckRadius: 0.5
+  towerCheckRadius: 0.4
   attackDelay: 1
   towerLayer:
     serializedVersion: 2
