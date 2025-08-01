@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PathDrawer : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class PathDrawer : MonoBehaviour
     private bool isDragging = false;
     private bool pathFinished = false;
     private bool isDrawing = false;
+    public UnityEvent onPathCompleted;
+    private bool pathCompletedEventTriggered = false;
+
     public bool IsDrawing => isDrawing;
 
     void Update()
@@ -27,7 +31,11 @@ public class PathDrawer : MonoBehaviour
             isDragging = false;
             isDrawing = false;
         }
-
+        if (pathFinished && !isDrawing && !pathCompletedEventTriggered)
+        {
+            onPathCompleted?.Invoke();
+            pathCompletedEventTriggered = true; // prevent repeated calls
+        }
         if (isDragging && !pathFinished)
         {
             Vector2 mouseWorldPos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -63,6 +71,11 @@ public class PathDrawer : MonoBehaviour
                         AddTileToPath(tile);
                     }
                 }
+
+                if(TutorialManager.Instance != null)
+                {
+                    TutorialManager.Instance.Show(false);
+                }
             }
         }
     }
@@ -80,9 +93,13 @@ public class PathDrawer : MonoBehaviour
             Debug.Log("Finish tile reached. Path completed!");
 
             if (player != null)
+            {
                 player.SetPath(pathTiles);
+            }
             else
+            {
                 Debug.LogWarning("Player reference not set in PathDrawer.");
+            }
         }
     }
 
@@ -106,6 +123,7 @@ public class PathDrawer : MonoBehaviour
         pathTiles.Clear();
         pathFinished = false;
         isDrawing = false;
+        pathCompletedEventTriggered = false;
     }
 
     public void ClearPath()

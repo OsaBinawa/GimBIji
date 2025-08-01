@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour,IHealth
@@ -13,6 +14,8 @@ public class PlayerController : MonoBehaviour,IHealth
     private Queue<Vector3> pathQueue = new Queue<Vector3>();
     private bool isMoving = false;
     public float detectionRange = 0.1f;
+    bool reachEnd;
+    [SerializeField] Button startButton;
 
     public LayerMask resourceLayer;
     public LayerMask dropOffLayer;
@@ -40,8 +43,11 @@ public class PlayerController : MonoBehaviour,IHealth
 
         if (path.Count > 0)
             finishTilePosition = path[^1].transform.position;
+    }
 
-        if (!isMoving)
+    public void Move()
+    {
+        if (!isMoving && !reachEnd)
             StartCoroutine(FollowPath());
     }
 
@@ -51,6 +57,7 @@ public class PlayerController : MonoBehaviour,IHealth
 
         while (pathQueue.Count > 0)
         {
+            startButton.interactable = false;
             Vector3 target = pathQueue.Dequeue();
 
             while (Vector3.Distance(transform.position, target) > 0.05f)
@@ -197,6 +204,7 @@ public class PlayerController : MonoBehaviour,IHealth
         StopAllCoroutines(); // Hentikan gerakan saat ini
         pathQueue.Clear();   // Bersihkan path
         isMoving = false;
+        reachEnd = false;
         transform.position = startPosition;
         ResetResources();    // Opsional: reset resource juga
     }

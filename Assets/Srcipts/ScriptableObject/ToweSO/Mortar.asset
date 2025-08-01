@@ -20,5 +20,5 @@ MonoBehaviour:
   towerPref: {fileID: 1763084283338127800, guid: 02e8f41db55e7de4ea7c561fb4b7c54b, type: 3}
   towerType: 0
   allowedTileTypes: 00000000
-  rangeWidth: 5
-  rangeHeight: 5
+  rangeWidth: 0
+  rangeHeight: 0
