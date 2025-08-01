@@ -18,13 +18,22 @@ MonoBehaviour:
     timeBetweenEnemies: 0.5
     delayBetweenBatches: 1
     enemyTypeIndices: 000000000000000000000000000000000000000000000000
+    Resources:
+    - position: {x: 1, y: 0}
+      type: 0
   - totalEnemies: 21
     batchSize: 5
     timeBetweenEnemies: 0.5
     delayBetweenBatches: 1
     enemyTypeIndices: 
+    Resources:
+    - position: {x: 2, y: 0}
+      type: 0
   - totalEnemies: 22
     batchSize: 6
     timeBetweenEnemies: 0.5
     delayBetweenBatches: 1
     enemyTypeIndices: 
+    Resources:
+    - position: {x: 3, y: 0}
+      type: 0

@@ -152,6 +152,15 @@ public class EnemySpawner : MonoBehaviour
     {
         if (currentWaveIndex < waveManager.waves.Count)
         {
+            // Prepare next wave's resources
+            waveManager.SetCurrentWave(currentWaveIndex);
+
+            // Refresh pickups/dropoffs for the new wave
+            if (GridManager.instance != null)
+            {
+                GridManager.instance.UpdatePickupsAndDropoffs();
+            }
+
             StartCoroutine(WaitAndResetPath());
         }
         else
@@ -213,7 +222,7 @@ public class EnemySpawner : MonoBehaviour
 
         yield return StartCoroutine(WaitForNewPath());         // Wait until at least 2 tiles
         yield return StartCoroutine(WaitForPathToFinish());    // Wait until player finishes drawing
-
+       
         nextWave = false;
 
         if (pathDrawer.pathTiles != null && pathDrawer.pathTiles.Count >= 2)

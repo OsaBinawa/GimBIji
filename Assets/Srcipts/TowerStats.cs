@@ -52,7 +52,7 @@ public class TowerStats : MonoBehaviour, IHealth
         if (gridManager != null)
         {
             currentGridPosition = GetGridPositionFromWorld(transform.position);
-            Debug.Log("Tower grid position: " + currentGridPosition);
+            //Debug.Log("Tower grid position: " + currentGridPosition);
 
         }
     }
