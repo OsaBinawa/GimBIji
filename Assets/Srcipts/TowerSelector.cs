@@ -45,11 +45,16 @@ public class TowerSelector : MonoBehaviour
 
     void SelectTower(TowerStats tower)
     {
+        // Clear previous selection highlights
         if (selectedTower != null && selectedTower != tower)
+        {
             selectedTower.HideUI();
+            selectedTower.ClearHighlightedTiles();
+        }
 
         selectedTower = tower;
         selectedTower.ShowUI();
+        selectedTower.HighlightTilesInRange(); // highlight when selected
     }
 
     void DeselectTower()
@@ -57,7 +62,9 @@ public class TowerSelector : MonoBehaviour
         if (selectedTower != null)
         {
             selectedTower.HideUI();
+            selectedTower.ClearHighlightedTiles(); // clear when deselecting
             selectedTower = null;
         }
     }
+
 }

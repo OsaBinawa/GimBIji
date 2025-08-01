@@ -1,17 +1,18 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening.Core.Easing;
 
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
+public enum objectiveType { pickUp, dropOff }
 
-public enum objectiveType {pickUp, dropOff }
 [System.Serializable]
 public class ResoucePosition
 {
     public Vector2Int position;
-    public objectiveType type;  
+    public objectiveType type;
 }
 
 public class GridManager : MonoBehaviour
@@ -32,11 +33,15 @@ public class GridManager : MonoBehaviour
     public GameObject dropoffPrefab;
     public List<ResoucePosition> Resources = new();
 
+    public WaveManager waveManager;
+    [SerializeField] private EnemySpawner spawner;
+
     private GridTile[,] grid;
 
     private void Awake()
     {
         instance = this;
+        waveManager.SetCurrentWave(spawner.currentWaveIndex);
     }
 
     void Start()
@@ -46,6 +51,7 @@ public class GridManager : MonoBehaviour
 
     void GenerateGrid()
     {
+        RefreshResourcesFromWave();
         if (tilePrefab == null)
         {
             Debug.LogError("Tile Prefab is not assigned!");
@@ -76,32 +82,100 @@ public class GridManager : MonoBehaviour
         SetTileType(startTilePos, TileType.Start);
         SetTileType(finishTilePos, TileType.Finish);
 
+        SpawnAllResources();
+    }
+
+    void SpawnAllResources()
+    {
         foreach (var point in Resources)
         {
-            if (IsInBounds(point.position))
+            SpawnResource(point);
+        }
+    }
+
+    void SpawnResource(ResoucePosition point)
+    {
+        if (IsInBounds(point.position))
+        {
+            GridTile tile = grid[point.position.x, point.position.y];
+            tile.SetOccupied(true);
+
+            Vector3 spawnPos = tile.transform.position;
+            GameObject obj = null;
+
+            switch (point.type)
             {
-                GridTile tile = grid[point.position.x, point.position.y];
-                tile.SetOccupied(true);
+                case objectiveType.pickUp:
+                    if (pickupPrefab != null)
+                        obj = Instantiate(pickupPrefab, spawnPos, Quaternion.identity, tile.transform);
+                    break;
 
-                Vector3 spawnPos = tile.transform.position;
-                GameObject obj = null;
-
-                switch (point.type)
-                {
-                    case objectiveType.pickUp:
-                        if (pickupPrefab != null)
-                            obj = Instantiate(pickupPrefab, spawnPos, Quaternion.identity, tile.transform);
-                        break;
-
-                    case objectiveType.dropOff:
-                        if (dropoffPrefab != null)
-                            obj = Instantiate(dropoffPrefab, spawnPos, Quaternion.identity, tile.transform);
-                        break;
-                }
-
-                if (obj != null)
-                    tile.SetOccupied(obj);
+                case objectiveType.dropOff:
+                    if (dropoffPrefab != null)
+                        obj = Instantiate(dropoffPrefab, spawnPos, Quaternion.identity, tile.transform);
+                    break;
             }
+
+            if (obj != null)
+                tile.SetOccupied(obj);
+        }
+    }
+
+    public void RemoveResourceAt(Vector2Int pos)
+    {
+        // Remove from list
+        Resources.RemoveAll(r => r.position == pos);
+
+        // Remove from scene
+        if (IsInBounds(pos))
+        {
+            GridTile tile = grid[pos.x, pos.y];
+            for (int i = tile.transform.childCount - 1; i >= 0; i--)
+            {
+                Destroy(tile.transform.GetChild(i).gameObject);
+            }
+            tile.SetOccupied(false);
+        }
+    }
+
+    public void UpdatePickupsAndDropoffs()
+    {
+        // Remove anything not in Resources
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                Vector2Int pos = new Vector2Int(x, y);
+                bool stillExists = Resources.Exists(r => r.position == pos);
+
+                if (!stillExists && IsInBounds(pos))
+                {
+                    GridTile tile = grid[pos.x, pos.y];
+                    for (int i = tile.transform.childCount - 1; i >= 0; i--)
+                    {
+                        Destroy(tile.transform.GetChild(i).gameObject);
+                    }
+                    tile.SetOccupied(false);
+                }
+            }
+        }
+
+        // Spawn new resources from list
+        foreach (var point in Resources)
+        {
+            SpawnResource(point);
+        }
+    }
+
+    public void RefreshResourcesFromWave()
+    {
+        if (waveManager != null && waveManager.CurrentWaveResources != null)
+        {
+            Resources = new List<ResoucePosition>(waveManager.CurrentWaveResources);
+        }
+        else
+        {
+            Resources.Clear();
         }
     }
 
@@ -120,13 +194,12 @@ public class GridManager : MonoBehaviour
         return new Vector2Int(x, y);
     }
 
-
     void SetTileType(Vector2Int pos, TileType type)
     {
         if (IsInBounds(pos))
         {
             grid[pos.x, pos.y].tileType = type;
-            grid[pos.x, pos.y].SendMessage("Awake"); 
+            grid[pos.x, pos.y].SendMessage("Awake");
         }
     }
 
@@ -144,7 +217,6 @@ public class GridManager : MonoBehaviour
 
     void OnDrawGizmos()
     {
-       
         Vector2 origin = autoCenter
             ? new Vector2(-width * tileSize / 2f + tileSize / 2f, -height * tileSize / 2f + tileSize / 2f)
             : gridOrigin;
@@ -158,7 +230,6 @@ public class GridManager : MonoBehaviour
                 Gizmos.DrawWireCube(center, Vector3.one * tileSize * 0.95f);
 
 #if UNITY_EDITOR
-                
                 GUIStyle style = new GUIStyle
                 {
                     normal = { textColor = Color.yellow },

@@ -52,6 +52,15 @@ public class GridTile : MonoBehaviour
                 break;
         }
     }
+    public void Highlight()
+    {
+        sr.color = Color.green;
+    }
+
+    public void ResetHighlight()
+    {
+        sr.color = Color.white;
+    }
 
     public void UpdateTileVisual()
     {

@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using DG.Tweening.Core.Easing;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-
+    public WaveManager WaveManager;
     EnemySpawner enemySpawner; 
     PlayerController playerController;
     public Slider WaveSlider;
@@ -72,6 +73,7 @@ public class GameManager : MonoBehaviour
     {
         remainingEnemies = totalEnemies;
         Debug.Log("Wave started with enemies: " + totalEnemies);
+        
     }
 
     public void NotifyEnemyResolved(Enemy enemy)

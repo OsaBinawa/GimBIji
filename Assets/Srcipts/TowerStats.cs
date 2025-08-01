@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class TowerStats : MonoBehaviour, IHealth
 {
@@ -12,6 +13,7 @@ public class TowerStats : MonoBehaviour, IHealth
     [SerializeField] protected GameObject projectilePrefab;
     [SerializeField] protected Transform firePoint;
     [SerializeField] protected float cooldown;
+    [SerializeField]private List<GridTile> highlightedTiles = new List<GridTile>();
     private Vector2Int facingDirection = Vector2Int.up;
 
     public GridManager gridManager;
@@ -47,12 +49,19 @@ public class TowerStats : MonoBehaviour, IHealth
 
     private void FixedUpdate()
     {
-       
+        if (gridManager != null)
+        {
+            currentGridPosition = GetGridPositionFromWorld(transform.position);
+            //Debug.Log("Tower grid position: " + currentGridPosition);
+
+        }
     }
 
     public void OnRotateButton()
     {
         RotateDirectionClockwise();
+        ClearHighlightedTiles();
+        HighlightTilesInRange();
     }
 
     public void OnDestroyButton()
@@ -71,6 +80,7 @@ public class TowerStats : MonoBehaviour, IHealth
                 Debug.LogWarning("Tile was null during tower destruction.");
             }
         }
+        ClearHighlightedTiles();
         GameManager.Instance.RemoveTower();
         Destroy(this.gameObject);
     }
@@ -135,7 +145,7 @@ public class TowerStats : MonoBehaviour, IHealth
         if (p != null)
         {
             p.SetDirection(dir);
-            p.damage = dmg;
+            p.damage = dmg; 
         }
 
         cooldown = Time.time + 1f / fireRate;
@@ -183,6 +193,38 @@ public class TowerStats : MonoBehaviour, IHealth
         Gizmos.DrawSphere(transform.position, 0.1f);
     }
 
+    public void HighlightTilesInRange()
+    {
+        ClearHighlightedTiles();
+
+        Vector2Int forward = facingDirection;
+        for (int dx = -RangeWidth / 2; dx <= RangeWidth / 2; dx++)
+        {
+            for (int dy = 1; dy <= RangeHeight; dy++)
+            {
+                Vector2Int offset = new Vector2Int(dx, dy);
+                Vector2Int targetPos = currentGridPosition + RotateOffset(offset, forward);
+                var tile = gridManager.GetTileAtPosition(targetPos);
+
+                if (tile != null)
+                {
+                    tile.Highlight();
+                    highlightedTiles.Add(tile);
+                }
+            }
+        }
+    }
+
+    public void ClearHighlightedTiles()
+    {
+        foreach (var tile in highlightedTiles)
+        {
+            if (tile != null)
+                tile.ResetHighlight();
+        }
+        highlightedTiles.Clear();
+    }
+
     public void ShowUI()
     {
         if (uiPanel != null)
@@ -209,5 +251,7 @@ public class TowerStats : MonoBehaviour, IHealth
         Debug.Log("Tower died.");
         Destroy(gameObject);
     }
+
+
 
 }

@@ -1,10 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class TowerButtonSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject buttonPrefab;   // Prefab with TowerButton + Image + Text
-    [SerializeField] private Transform buttonParent;    // UI parent (e.g., horizontal layout)
+    [SerializeField] private GameObject buttonPrefab;
+    [SerializeField] private Transform buttonParent;
 
     private void Start()
     {
@@ -13,17 +13,22 @@ public class TowerButtonSpawner : MonoBehaviour
 
     public void SpawnTowerButtons()
     {
+        // Remove old UI buttons
+        foreach (Transform child in buttonParent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // Spawn buttons for exactly what's in availableTowers
         foreach (TowerData towerData in TowerManager.Instance.availableTowers)
         {
             GameObject btn = Instantiate(buttonPrefab, buttonParent);
             TowerButton towerButton = btn.GetComponent<TowerButton>();
             towerButton.towerToSelect = towerData;
 
-            // Optional UI setup
-            TowerButton tb = btn.GetComponent<TowerButton>();
-            if (tb != null && tb.towerIcon != null)
+            if (towerButton.towerIcon != null)
             {
-                tb.towerIcon.sprite = towerData.icon;
+                towerButton.towerIcon.sprite = towerData.icon;
             }
 
             Text label = btn.GetComponentInChildren<Text>();

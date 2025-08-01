@@ -21,4 +21,14 @@ public class TowerManager : MonoBehaviour
         SelectedTowerData = data;
         Debug.Log("Selected tower: " + data.name);
     }
+
+    private void OnValidate()
+    {
+        HashSet<TowerData> uniqueSet = new HashSet<TowerData>(availableTowers);
+        if (uniqueSet.Count != availableTowers.Count)
+        {
+            availableTowers = new List<TowerData>(uniqueSet);
+            Debug.LogWarning("Duplicate towers removed from availableTowers list.");
+        }
+    }
 }
