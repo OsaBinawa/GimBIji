@@ -281,21 +281,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c236ef774c2f34abdd0685b0014984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerID: 0
+  towerID: 2
   towerData: {fileID: 11400000, guid: f347642af35f984499c0dea537800f0e, type: 2}
   uiPanel: {fileID: 8586128152865743670}
   curHP: 0
   projectilePrefab: {fileID: 8540980220111973486, guid: 2dd799a30a9f76045bd5a9576ac9e915, type: 3}
   firePoint: {fileID: 5038831831164302886}
   cooldown: 0
+  highlightedTiles: []
   gridManager: {fileID: 0}
   currentGridPosition: {x: 0, y: 0}
   arcHeight: 6
   selectedTargetTile: {x: 0, y: 0}
   tileSize: 1
   hasSelectedTarget: 0
-  targetRangeX: 1
-  targetRangeY: 1
+  targetRangeX: 2
+  targetRangeY: 2
   highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   selectedColor: {r: 1, g: 0.09633897, b: 0.031372547, a: 1}
   normalColor: {r: 1, g: 1, b: 1, a: 1}

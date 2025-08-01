@@ -4983,6 +4983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee045ee2ae8ac304e8619bbcd63aab26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WaveManager: {fileID: 0}
   WaveSlider: {fileID: 1870039817}
   animationDuration: 0.5
   TowerBar: {fileID: 309320471}
@@ -5340,7 +5341,7 @@ Transform:
   m_GameObject: {fileID: 383806434}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0225, y: 0.0123, z: 0.1}
+  m_LocalPosition: {x: 0.0225, y: 0.0123, z: 1}
   m_LocalScale: {x: 0.92986274, y: 0.93057084, z: 1.0116}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5393,6 +5394,8 @@ MonoBehaviour:
     type: 0
   - position: {x: 5, y: 5}
     type: 1
+  waveManager: {fileID: 11400000, guid: 704a9b5d6211dee4f9c5fc3fae9f1898, type: 2}
+  spawner: {fileID: 1324895167}
 --- !u!114 &469294034
 MonoBehaviour:
   m_ObjectHideFlags: 0
