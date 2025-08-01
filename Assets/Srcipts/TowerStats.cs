@@ -131,7 +131,12 @@ public class TowerStats : MonoBehaviour, IHealth
         Vector3 dir = (targetPosition - transform.position).normalized;
 
         GameObject proj = Instantiate(projectilePrefab, firePoint != null ? firePoint.position : transform.position, Quaternion.identity);
-        proj.GetComponent<Projectile>().SetDirection(dir);
+        Projectile p = proj.GetComponent<Projectile>();
+        if (p != null)
+        {
+            p.SetDirection(dir);
+            p.damage = dmg;
+        }
 
         cooldown = Time.time + 1f / fireRate;
     }

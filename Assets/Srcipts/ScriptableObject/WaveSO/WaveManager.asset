@@ -17,7 +17,7 @@ MonoBehaviour:
     batchSize: 4
     timeBetweenEnemies: 0.5
     delayBetweenBatches: 1
-    enemyTypeIndices: 000000000000000000000000000000000000000000000000
+    enemyTypeIndices: 020000000200000002000000020000000200000002000000
   - totalEnemies: 21
     batchSize: 5
     timeBetweenEnemies: 0.5

@@ -149,16 +149,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: []
   currentIndex: 1
-  moveSpeed: 1
+  moveSpeed: 2
   isStopped: 0
   towerCheckRadius: 0.5
-  attackDelay: 1
+  attackDelay: 0.5
   towerLayer:
     serializedVersion: 2
     m_Bits: 256
   attacking: 0
-  maxHealth: 100
-  currentHealth: 100
-  Damage: 100
+  maxHealth: 50
+  currentHealth: 50
+  Damage: 50
   playerController: {fileID: 0}
   walkThroughTowerIDs: 00000000

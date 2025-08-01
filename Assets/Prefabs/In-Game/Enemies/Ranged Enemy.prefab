@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: []
   currentIndex: 1
-  moveSpeed: 1
+  moveSpeed: 1.5
   isStopped: 0
   towerCheckRadius: 1
   attackDelay: 1
@@ -143,9 +143,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   attacking: 0
-  maxHealth: 100
-  currentHealth: 100
-  Damage: 100
+  maxHealth: 75
+  currentHealth: 75
+  Damage: 75
   playerController: {fileID: 0}
   attackRange: 2
   projectilePrefab: {fileID: 5205176443788537979, guid: 5f2b3e223ed6fda46ac331ef6d1fb652, type: 3}
