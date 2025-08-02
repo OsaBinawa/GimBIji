@@ -25,7 +25,10 @@ public class TowerMortar : TowerStats
         HandleMouseTargetSelection();
         if (hasSelectedTarget && Time.time >= cooldown)
         {
-            ShootAtSelectedTile();
+            if (EnemySpawner.Instance.isSpawning)
+            {
+                ShootAtSelectedTile();
+            }
         }
     }
 

@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Slider TowerBar;
     [SerializeField] TMP_Text TowerCountText;
     [SerializeField] private int remainingEnemies = 0;
+    [SerializeField] TextMeshProUGUI enemyCountText;
     public int maxTowerSelected;
     public int maxTowersAllowed = 5; 
     public int currentTowerCount = 0;
@@ -40,6 +41,11 @@ public class GameManager : MonoBehaviour
             Debug.Log($"[DEBUG] Current Wave: {index + 1} / {total}");
         }
     }*/
+
+    private void Update()
+    {
+        enemyCountText.text = remainingEnemies.ToString();
+    }
 
     public void UpdateWaveUI()
     {

@@ -118,6 +118,7 @@ public class TowerButton : MonoBehaviour
         // 4️⃣ Place tower
         GameObject tower = Instantiate(towerToSelect.towerPref, tile.transform.position, Quaternion.identity);
         TowerStats stats = tower.GetComponent<TowerStats>();
+        tower.layer = LayerMask.NameToLayer("Enemy");
         stats.gridManager = gridManager;
         stats.currentGridPosition = gridPos;
 

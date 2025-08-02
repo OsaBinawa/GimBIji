@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public static EnemySpawner Instance;
     public List<GameObject> enemyPrefabs;
 
     public List<GridTile> pathToFollow;
@@ -15,9 +16,14 @@ public class EnemySpawner : MonoBehaviour
     public bool nextWave;
 
     [SerializeField]public int currentWaveIndex = 0;
-    private bool isSpawning = false;
+    public bool isSpawning = false;
     public bool playerReachEnd;
     //private int aliveEnemies = 0;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public void StartSpawning(List<GridTile> path)
     {

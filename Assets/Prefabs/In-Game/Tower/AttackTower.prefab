@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2388798923537821992}
   - component: {fileID: 1784284223486506930}
   - component: {fileID: 2536282660069543195}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Destroy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 5907110195087825490}
   - component: {fileID: 6887461134629706003}
   - component: {fileID: 5195389677519056965}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: AttackTower
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 3984205567633748817}
   - component: {fileID: 1866031413394470034}
   - component: {fileID: 7880803221805773255}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Rotate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5038831831164302886}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Firepoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 1948709703535241186}
   - component: {fileID: 2772835177727361354}
   - component: {fileID: 8017854078868628976}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +515,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &2772835177727361354
 MonoBehaviour:

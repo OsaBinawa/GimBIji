@@ -53,7 +53,6 @@ public class TowerStats : MonoBehaviour, IHealth
         {
             currentGridPosition = GetGridPositionFromWorld(transform.position);
             //Debug.Log("Tower grid position: " + currentGridPosition);
-
         }
     }
 
