@@ -103,6 +103,11 @@ public class GameManager : MonoBehaviour
         // Reset tower count immediately
         currentTowerCount = 0;
         updateUI();
+        if (enemySpawner != null)
+        {
+            enemySpawner.playerEnd(false);
+            Debug.Log("Reset playerReachEnd to false because all towers were destroyed.");
+        }
         TowerBar.DOValue(currentTowerCount, 0.5f).SetEase(Ease.OutSine);
     }
 
