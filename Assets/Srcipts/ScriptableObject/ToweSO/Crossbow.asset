@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4abcec6f6f7ebbe4caad9ec38d99d590, type: 3}
   m_Name: Crossbow
   m_EditorClassIdentifier: 
-  Name: Ini Segitiga
-  HP: 50
+  Name: Crossbow
+  HP: 100
   Damage: 12
   fireRate: 4
   icon: {fileID: 4288217071036081520, guid: 504ad05ef7a675346bd3c34c999ae658, type: 3}
   towerPref: {fileID: 1763084283338127800, guid: 4a484bcdd79d8294fbdd47c63a0b040d, type: 3}
   towerType: 0
   allowedTileTypes: 00000000
-  rangeWidth: 1
-  rangeHeight: 3
+  rangeWidth: 2
+  rangeHeight: 2

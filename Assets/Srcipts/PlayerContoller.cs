@@ -16,10 +16,10 @@ public class PlayerController : MonoBehaviour,IHealth
     public float detectionRange = 0.1f;
     bool reachEnd;
     [SerializeField] Button startButton;
-
+    UImanagers UI;
     public LayerMask resourceLayer;
     public LayerMask dropOffLayer;
-
+    //public bool openShopAfterMove = false;
     // Optional: event when path is completed
     public UnityEvent onPathCompleted;
 
@@ -27,6 +27,11 @@ public class PlayerController : MonoBehaviour,IHealth
     private Vector3 finishTilePosition;
 
     private Vector3 startPosition;
+
+    private void Awake()
+    {
+        UI = FindFirstObjectByType<UImanagers>();
+    }
 
     public void Start()
     {
@@ -88,6 +93,7 @@ public class PlayerController : MonoBehaviour,IHealth
         }
 
         isMoving = false;
+        
 
         // Call event when finished path
         onPathCompleted?.Invoke();
@@ -144,6 +150,7 @@ public class PlayerController : MonoBehaviour,IHealth
                 Debug.Log("Collected: " + hit.name);
                 Destroy(hit.gameObject);
                 heldResourceCount--;
+                GameManager.Instance.maxTowerSelected++;
                 foundAny = true;
             }
         }
@@ -182,6 +189,7 @@ public class PlayerController : MonoBehaviour,IHealth
             Gizmos.DrawWireSphere(transform.position + dir, detectionRange);
         }
     }
+
 
     public int GetHeldResourceCount()
     {

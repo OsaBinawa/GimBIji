@@ -13,8 +13,17 @@ public class PathDrawer : MonoBehaviour
     private bool isDrawing = false;
     public UnityEvent onPathCompleted;
     private bool pathCompletedEventTriggered = false;
+    public bool openShopOnEnd = true;
 
     public bool IsDrawing => isDrawing;
+
+    private void Start()
+    {
+        if (player != null)
+        {
+            player.onPathCompleted.AddListener(OnPlayerReachedEnd);
+        }
+    }
 
     void Update()
     {
@@ -145,6 +154,24 @@ public class PathDrawer : MonoBehaviour
         int dy = Mathf.Abs(a.y - b.y);  
         return (dx + dy == 1); // Only allow cardinal directions
     }
+
+    private void OnPlayerReachedEnd()
+    {
+        if (!openShopOnEnd)
+        {
+            var ui = FindFirstObjectByType<UImanagers>();
+            if (ui != null)
+            {
+                ui.OpenShop();
+                openShopOnEnd = true;
+            }
+        }
+        else
+        {
+            return;
+        }
+    }
+       
 
     public void EnableDrawing()
     {

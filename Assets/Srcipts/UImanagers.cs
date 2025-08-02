@@ -18,6 +18,9 @@ public class UImanagers : MonoBehaviour
     [SerializeField] private float offset = 300f;
     [SerializeField] private float duration = 0.5f;
     [SerializeField] private Ease ease = Ease.OutBack;
+    [SerializeField] private List<GameObject> shopContent = new();
+    [SerializeField] private GameObject vigShop;
+    [SerializeField] private GameObject Shop;
 
     void Start()
     {
@@ -55,5 +58,57 @@ public class UImanagers : MonoBehaviour
 
         return start;
     }
+
+    public void OpenShop()
+    {
+        Debug.Log("DEBUG: OpenShop called from: " + new System.Diagnostics.StackTrace());
+        if (Shop == null) return;
+        vigShop.SetActive(true);
+        // Activate shop so DOTween can run
+        Shop.SetActive(true);
+
+        // Get the RectTransform to animate
+        RectTransform shopRect = Shop.GetComponent<RectTransform>();
+        foreach (var obj in shopContent)
+        {
+            if (obj != null)
+            {
+                obj.SetActive(true); // Must be active for DOTween to run
+                obj.transform.localScale = Vector3.zero; // Start hidden
+            }
+        }
+        // Optional: disable shop content initially
+       /* foreach (Transform child in shopRect)
+        {
+            child.gameObject.SetActive(false);
+        }*/
+
+        // Start scale at zero for animation
+        shopRect.localScale = Vector3.zero;
+
+        DOVirtual.DelayedCall(0.1f, () =>
+        {
+            shopRect.DOScale(Vector3.one, 0.3f)
+            .SetEase(Ease.OutBack)
+            .OnComplete(() =>
+            {
+                // Enable content after 0.1 sec
+                DOVirtual.DelayedCall(0.1f, () =>
+                {
+                    foreach (var obj in shopContent)
+                    {
+                        if (obj != null)
+                        {
+                            obj.transform.DOScale(.5f, 0.25f)
+                                .SetEase(Ease.OutBack)
+                                .SetDelay(.5f);
+                           
+                        }
+                    }
+                });
+            });
+        });
+    }
+
 }
 

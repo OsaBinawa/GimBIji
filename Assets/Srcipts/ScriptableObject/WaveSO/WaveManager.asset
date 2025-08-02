@@ -13,39 +13,29 @@ MonoBehaviour:
   m_Name: WaveManager
   m_EditorClassIdentifier: 
   waves:
-  - totalEnemies: 20
-    batchSize: 20
-    timeBetweenEnemies: 3
-    delayBetweenBatches: 0
-    enemyTypeIndices: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  - totalEnemies: 6
+    batchSize: 4
+    timeBetweenEnemies: 0.5
+    delayBetweenBatches: 1
+    enemyTypeIndices: 000000000000000000000000000000000000000000000000
     Resources:
-    - position: {x: 3, y: 2}
+    - position: {x: 1, y: 0}
       type: 0
-  - totalEnemies: 25
-    batchSize: 5
-    timeBetweenEnemies: 1
-    delayBetweenBatches: 5
-    enemyTypeIndices: 00000000000000000100000001000000010000000000000000000000010000000100000001000000000000000000000001000000010000000100000000000000000000000100000001000000010000000000000000000000010000000100000001000000
-    Resources:
-    - position: {x: 6, y: 6}
+    - position: {x: 1, y: 3}
       type: 1
-    - position: {x: 2, y: 5}
+  - totalEnemies: 21
+    batchSize: 5
+    timeBetweenEnemies: 0.5
+    delayBetweenBatches: 1
+    enemyTypeIndices: 
+    Resources:
+    - position: {x: 2, y: 0}
       type: 0
-    - position: {x: 3, y: 1}
-      type: 0
-  - totalEnemies: 36
+  - totalEnemies: 22
     batchSize: 6
     timeBetweenEnemies: 0.5
-    delayBetweenBatches: 5
-    enemyTypeIndices: 000000000000000000000000010000000100000002000000000000000000000000000000010000000100000002000000000000000000000000000000010000000100000002000000000000000000000000000000010000000100000002000000000000000000000000000000010000000100000002000000000000000000000000000000010000000100000002000000
+    delayBetweenBatches: 1
+    enemyTypeIndices: 
     Resources:
-    - position: {x: 6, y: 0}
-      type: 0
-    - position: {x: 4, y: 6}
-      type: 0
-    - position: {x: 2, y: 6}
-      type: 0
-    - position: {x: 2, y: 1}
-      type: 0
-    - position: {x: 4, y: 1}
+    - position: {x: 3, y: 0}
       type: 0

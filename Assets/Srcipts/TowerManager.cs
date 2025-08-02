@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerManager : MonoBehaviour
@@ -30,5 +30,27 @@ public class TowerManager : MonoBehaviour
             availableTowers = new List<TowerData>(uniqueSet);
             Debug.LogWarning("Duplicate towers removed from availableTowers list.");
         }
+    }
+
+    public bool TryAddTower(TowerData tower)
+    {
+        // Check limit
+        if (availableTowers.Count >= GameManager.Instance.maxTowerSelected)
+        {
+            Debug.Log("❌ Cannot add more towers — reached limit of " + GameManager.Instance.maxTowerSelected);
+            return false;
+        }
+
+        // Check duplicates
+        if (availableTowers.Contains(tower))
+        {
+            Debug.Log("⚠ Tower already in the list: " + tower.name);
+            return false;
+        }
+
+        // Add tower
+        availableTowers.Add(tower);
+        Debug.Log("✅ Added tower: " + tower.name);
+        return true;
     }
 }

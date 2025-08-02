@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class AddTower : MonoBehaviour
@@ -9,21 +9,30 @@ public class AddTower : MonoBehaviour
 
     public void OnClick()
     {
+
         if (TowerManager.Instance == null || towerToAdd == null)
         {
             Debug.LogWarning("TowerManager or TowerData missing.");
             return;
         }
 
-        if (!TowerManager.Instance.availableTowers.Contains(towerToAdd))
+        // Limit based on GameManager.maxTowerSelected
+        if (TowerManager.Instance.availableTowers.Count >= GameManager.Instance.maxTowerSelected)
         {
-            TowerManager.Instance.availableTowers.Add(towerToAdd);
-            Debug.Log("Tower added to available list: " + towerToAdd.name);
+            Debug.Log(" Cannot add more towers — limit reached (" + GameManager.Instance.maxTowerSelected + ")");
+            return;
         }
-        else
+
+        // Prevent duplicates
+        if (TowerManager.Instance.availableTowers.Contains(towerToAdd))
         {
-            Debug.Log("Tower already in the list: " + towerToAdd.name);
+            Debug.Log("Tower already in selection: " + towerToAdd.name);
+            return;
         }
+
+        // Add tower to the list
+        TowerManager.Instance.availableTowers.Add(towerToAdd);
+        Debug.Log(" Added tower: " + towerToAdd.name);
         addButton.interactable = false;
         buttonSpawner.SpawnTowerButtons();
         
