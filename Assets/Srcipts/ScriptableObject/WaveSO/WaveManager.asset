@@ -21,8 +21,6 @@ MonoBehaviour:
     Resources:
     - position: {x: 1, y: 0}
       type: 0
-    - position: {x: 1, y: 3}
-      type: 1
   - totalEnemies: 21
     batchSize: 5
     timeBetweenEnemies: 0.5
