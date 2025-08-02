@@ -242,6 +242,8 @@ public class TowerStats : MonoBehaviour, IHealth
         if (curHP <= 0)
         {
             Die();
+            GameManager.Instance.currentTowerCount--;
+            GameManager.Instance.updateUI();
             Destroy(gameObject);
         }
     }

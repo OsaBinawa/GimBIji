@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int remainingEnemies = 0;
     public int maxTowerSelected;
     public int maxTowersAllowed = 5; 
-    private int currentTowerCount = 0;
+    public int currentTowerCount = 0;
     void Awake()
     {
         Time.timeScale = 1f;
@@ -112,9 +112,11 @@ public class GameManager : MonoBehaviour
     }
 
 
-    void updateUI()
+    public void updateUI()
     {
         TowerCountText.text = $"{currentTowerCount} / {maxTowersAllowed}";
+        TowerBar.DOValue(currentTowerCount, 1)
+                .SetEase(Ease.OutSine);
     }
     public void GameOver()
     {
