@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4abcec6f6f7ebbe4caad9ec38d99d590, type: 3}
   m_Name: Crossbow
   m_EditorClassIdentifier: 
-  Name: Ini Segitiga
+  Name: Crossbow
   HP: 100
   Damage: 12
   fireRate: 4

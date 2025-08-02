@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Slider TowerBar;
     [SerializeField] TMP_Text TowerCountText;
     [SerializeField] private int remainingEnemies = 0;
-
+    public int maxTowerSelected;
     public int maxTowersAllowed = 5; 
     private int currentTowerCount = 0;
     void Awake()
