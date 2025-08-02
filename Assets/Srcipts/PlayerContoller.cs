@@ -103,11 +103,11 @@ public class PlayerController : MonoBehaviour,IHealth
     {
         bool foundAny = false;
         Vector3[] directions = {
-            Vector3.up,
-            Vector3.down,
-            Vector3.left,
-            Vector3.right
-        };
+        Vector3.up,
+        Vector3.down,
+        Vector3.left,
+        Vector3.right
+    };
 
         foreach (var dir in directions)
         {
@@ -119,7 +119,11 @@ public class PlayerController : MonoBehaviour,IHealth
             if (hit != null)
             {
                 Debug.Log("Collected: " + hit.name);
-                Destroy(hit.gameObject);
+
+                // Get grid position and remove from GridManager so tile becomes free
+                Vector2Int gridPos = GridManager.instance.GetGridPositionFromWorld(hit.transform.position);
+                GridManager.instance.RemoveResourceAt(gridPos);
+
                 heldResourceCount++;
                 foundAny = true;
             }
@@ -132,11 +136,11 @@ public class PlayerController : MonoBehaviour,IHealth
     {
         bool foundAny = false;
         Vector3[] directions = {
-            Vector3.up,
-            Vector3.down,
-            Vector3.left,
-            Vector3.right
-        };
+        Vector3.up,
+        Vector3.down,
+        Vector3.left,
+        Vector3.right
+    };
 
         foreach (var dir in directions)
         {
@@ -147,8 +151,12 @@ public class PlayerController : MonoBehaviour,IHealth
 
             if (hit != null)
             {
-                Debug.Log("Collected: " + hit.name);
-                Destroy(hit.gameObject);
+                Debug.Log("Dropped off: " + hit.name);
+
+                // Get grid position and remove from GridManager so tile becomes free
+                Vector2Int gridPos = GridManager.instance.GetGridPositionFromWorld(hit.transform.position);
+                GridManager.instance.RemoveResourceAt(gridPos);
+
                 heldResourceCount--;
                 GameManager.Instance.maxTowerSelected++;
                 foundAny = true;
@@ -157,7 +165,6 @@ public class PlayerController : MonoBehaviour,IHealth
 
         return foundAny;
     }
-
     public void TakeDamage(float damage)
     {
         Debug.Log($"Player {damage} damage!");
