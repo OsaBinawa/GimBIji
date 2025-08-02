@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Ini Segitiga
   HP: 100
-  Damage: 25
+  Damage: 20
   fireRate: 2
   icon: {fileID: 1737957125956386992, guid: 1bcd93a3dcd9a4e46937400c08fec581, type: 3}
   towerPref: {fileID: 1763084283338127800, guid: f4a4a2b1644d25946b74da4493e13da7, type: 3}

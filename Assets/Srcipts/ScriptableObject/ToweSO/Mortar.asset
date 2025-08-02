@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Mortar
   m_EditorClassIdentifier: 
   Name: Ini Segitiga
-  HP: 100
-  Damage: 20
+  HP: 50
+  Damage: 17
   fireRate: 0.5
   icon: {fileID: -2634131790023260735, guid: a67e264f3fdebdc4e8f7de73ba966c80, type: 3}
   towerPref: {fileID: 1763084283338127800, guid: 02e8f41db55e7de4ea7c561fb4b7c54b, type: 3}
   towerType: 0
   allowedTileTypes: 00000000
-  rangeWidth: 5
-  rangeHeight: 5
+  rangeWidth: 0
+  rangeHeight: 0
