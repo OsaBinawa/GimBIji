@@ -241,7 +241,8 @@ MonoBehaviour:
   curHP: 0
   projectilePrefab: {fileID: 8540980220111973486, guid: 3148d9a16779bf24b8376bb7f6c589e8, type: 3}
   firePoint: {fileID: 5038831831164302886}
-  cooldown: 0
+  cooldown: 1
+  highlightedTiles: []
   gridManager: {fileID: 0}
   currentGridPosition: {x: 0, y: 0}
 --- !u!61 &5195389677519056965
