@@ -217,7 +217,7 @@ public class EnemySpawner : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         nextWave = true;
-
+        pathDrawer.openShopOnEnd = false;
         if (pathDrawer != null)
         {
             pathDrawer.ClearPath();           // Clear visuals
@@ -272,4 +272,28 @@ public class EnemySpawner : MonoBehaviour
             startWaveButton.interactable = true;
         }
     }
+
+    void OnEnable()
+    {
+        // Make sure we detect when player finishes movement
+        if (playerController != null)
+        {
+            playerController.onPathCompleted.AddListener(OnPlayerFinishedPath);
+        }
+    }
+
+    void OnDisable()
+    {
+        if (playerController != null)
+        {
+            playerController.onPathCompleted.RemoveListener(OnPlayerFinishedPath);
+        }
+    }
+
+    private void OnPlayerFinishedPath()
+    {
+        playerEnd(true);
+        Debug.Log("Player reached end of path — playerReachEnd = true");
+    }
+
 }

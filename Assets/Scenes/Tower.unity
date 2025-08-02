@@ -5659,6 +5659,7 @@ MonoBehaviour:
   onPathCompleted:
     m_PersistentCalls:
       m_Calls: []
+  openShopOnEnd: 0
 --- !u!4 &469294035
 Transform:
   m_ObjectHideFlags: 0

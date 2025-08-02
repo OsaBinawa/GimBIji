@@ -61,6 +61,7 @@ public class UImanagers : MonoBehaviour
 
     public void OpenShop()
     {
+        Debug.Log("DEBUG: OpenShop called from: " + new System.Diagnostics.StackTrace());
         if (Shop == null) return;
         vigShop.SetActive(true);
         // Activate shop so DOTween can run

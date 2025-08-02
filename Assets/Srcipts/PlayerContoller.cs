@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour,IHealth
     UImanagers UI;
     public LayerMask resourceLayer;
     public LayerMask dropOffLayer;
-
+    //public bool openShopAfterMove = false;
     // Optional: event when path is completed
     public UnityEvent onPathCompleted;
 
@@ -93,7 +93,8 @@ public class PlayerController : MonoBehaviour,IHealth
         }
 
         isMoving = false;
-        UI.OpenShop();
+        
+
         // Call event when finished path
         onPathCompleted?.Invoke();
     }
