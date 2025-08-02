@@ -214,6 +214,7 @@ public class PlayerController : MonoBehaviour,IHealth
         isMoving = false;
         reachEnd = false;
         transform.position = startPosition;
+        startButton.interactable = true;
         ResetResources();    // Opsional: reset resource juga
     }
 }

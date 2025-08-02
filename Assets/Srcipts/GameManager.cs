@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
 
         if (remainingEnemies <= 0)
         {
+            DestroyAllTowers();
             enemySpawner.OnAllEnemiesDefeated();
             if (enemySpawner.currentWaveIndex >= enemySpawner.waveManager.waves.Count)
             {
@@ -90,6 +91,21 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public void DestroyAllTowers()
+    {
+        TowerStats[] allTowers = FindObjectsByType<TowerStats>(FindObjectsSortMode.None);
+        foreach (var tower in allTowers)
+        {
+            tower.OnDestroyButton(); // Will also call RemoveTower()
+        }
+
+        // Reset tower count immediately
+        currentTowerCount = 0;
+        updateUI();
+        TowerBar.DOValue(currentTowerCount, 0.5f).SetEase(Ease.OutSine);
+    }
+
 
     void updateUI()
     {

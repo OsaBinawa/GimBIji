@@ -6290,7 +6290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056aef33bdda94148bfe1eab607b8213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableTowers: []
+  availableTowers:
+  - {fileID: 11400000, guid: 0babd7d0e6a9c7d4cb68ffe72d00095c, type: 2}
 --- !u!4 &1398449256
 Transform:
   m_ObjectHideFlags: 0
