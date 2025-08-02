@@ -4989,7 +4989,7 @@ MonoBehaviour:
   TowerBar: {fileID: 309320471}
   TowerCountText: {fileID: 77881639}
   remainingEnemies: 0
-  maxTowersAllowed: 5
+  maxTowersAllowed: 30
 --- !u!4 &26228564
 Transform:
   m_ObjectHideFlags: 0
