@@ -192,6 +192,13 @@ public class PlayerController : MonoBehaviour,IHealth
                 heldResourceCount--;
                 GameManager.Instance.maxTowerSelected++;
                 foundAny = true;
+
+                WorkShopUI wsUI = FindFirstObjectByType<WorkShopUI>();
+                if (wsUI != null)
+                {
+                    int delivered = 1; // or count how many delivered
+                    wsUI.UpdateUI(delivered);
+                }
             }
 
             Vector2Int playerGridPos = GridManager.instance.GetGridPositionFromWorld(transform.position);
@@ -200,6 +207,13 @@ public class PlayerController : MonoBehaviour,IHealth
                 heldResourceCount--;
                 GameManager.Instance.maxTowerSelected++;
                 foundAny = true;
+
+                WorkShopUI wsUI = FindFirstObjectByType<WorkShopUI>();
+                if (wsUI != null)
+                {
+                    int delivered = 1;
+                    wsUI.UpdateUI(delivered);
+                }
             }
 
         }
