@@ -18,6 +18,7 @@ MonoBehaviour:
   fireRate: 0
   icon: {fileID: 21300000, guid: 4dbb03db67f6bbb419c1a1ee81b51c8f, type: 3}
   towerPref: {fileID: 1763084283338127800, guid: 27338a6e228171a4893c5708f3b2beaa, type: 3}
+  towerPreview: {fileID: 1763084283338127800, guid: 99b24f4495bb8e64ba397b65f550967d, type: 3}
   towerType: 1
   allowedTileTypes: 00000000
   rangeWidth: 0

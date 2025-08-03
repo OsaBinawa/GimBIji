@@ -267,7 +267,7 @@ public class TowerStats : MonoBehaviour, IHealth
             HpSlider.SetActive(true);
             UpdateHpBar();
             GameManager.Instance.updateUI();
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 
@@ -279,8 +279,7 @@ public class TowerStats : MonoBehaviour, IHealth
 
     public void Die()
     {
-        Debug.Log("Tower died.");
-        Destroy(gameObject);
+        OnDestroyButton();
     }
 
 

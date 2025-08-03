@@ -193,7 +193,7 @@ public class TowerButton : MonoBehaviour
         Vector3 targetPos = tile.transform.position;
         if (previewObject == null)
         {
-            previewObject = Instantiate(towerToSelect.towerPref, targetPos, Quaternion.identity);
+            previewObject = Instantiate(towerToSelect.towerPreview, targetPos, Quaternion.identity);
         }
         else
         {
