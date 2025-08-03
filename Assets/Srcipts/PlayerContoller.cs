@@ -9,6 +9,11 @@ public class PlayerController : MonoBehaviour,IHealth
     public float moveSpeed = 3f;
     public int maxResourceHeld = 1;
     [SerializeField]private int heldResourceCount = 0;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite upSprite;
+    [SerializeField] private Sprite downSprite;
+    [SerializeField] private Sprite leftSprite;
+    [SerializeField] private Sprite rightSprite;
     public float CurrentHealth { get; private set; } = 100f;
     public float MaxHealth { get; private set; } = 100f;
     private Queue<Vector3> pathQueue = new Queue<Vector3>();
@@ -23,7 +28,6 @@ public class PlayerController : MonoBehaviour,IHealth
     // Optional: event when path is completed
     public UnityEvent onPathCompleted;
 
-    // Optional: track last position (Finish)
     private Vector3 finishTilePosition;
 
     private Vector3 startPosition;
@@ -65,6 +69,10 @@ public class PlayerController : MonoBehaviour,IHealth
             startButton.interactable = false;
             Vector3 target = pathQueue.Dequeue();
 
+            // 🔹 Detect direction before moving
+            Vector3 dir = (target - transform.position).normalized;
+            UpdateSpriteDirection(dir);
+
             while (Vector3.Distance(transform.position, target) > 0.05f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
@@ -81,10 +89,10 @@ public class PlayerController : MonoBehaviour,IHealth
                     yield return new WaitForSeconds(0.3f);
             }
 
+            // Try dropping resources if full
             if (heldResourceCount == maxResourceHeld)
             {
                 bool drop = TryDropResource();
-
                 if (drop)
                     yield return new WaitForSeconds(0.3f);
             }
@@ -93,10 +101,29 @@ public class PlayerController : MonoBehaviour,IHealth
         }
 
         isMoving = false;
-        
 
         // Call event when finished path
         onPathCompleted?.Invoke();
+    }
+
+    private void UpdateSpriteDirection(Vector3 dir)
+    {
+        if (dir == Vector3.zero) return;
+
+        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+        {
+            if (dir.x > 0)
+                spriteRenderer.sprite = rightSprite;
+            else
+                spriteRenderer.sprite = leftSprite;
+        }
+        else
+        {
+            if (dir.y > 0)
+                spriteRenderer.sprite = upSprite;
+            else
+                spriteRenderer.sprite = downSprite;
+        }
     }
 
     private bool TryCollectAdjacentResources()

@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI enemyCountText;
     [SerializeField] GameObject LosePanel;
     [SerializeField] GameObject WinPanel;
+    [SerializeField] TMP_Text AllTowerCountText;
     public int maxTowerSelected;
     public int maxTowersAllowed = 5; 
     public int currentTowerCount = 0;
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         enemyCountText.text = remainingEnemies.ToString();
+        AllTowerCountText.text = $"{TowerManager.Instance.availableTowers.Count}/{maxTowerSelected}";
     }
 
     public void UpdateWaveUI()
@@ -158,6 +160,11 @@ public class GameManager : MonoBehaviour
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             });
+    }
+
+    public void OnApplicationQuit()
+    {
+        Application.Quit();
     }
 
 }
