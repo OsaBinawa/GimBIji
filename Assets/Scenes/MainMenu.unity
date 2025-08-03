@@ -1396,14 +1396,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2039306297}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: ShowPanel
-        m_Mode: 2
+        m_MethodName: GoToScene
+        m_Mode: 5
         m_Arguments:
-          m_ObjectArgument: {fileID: 341606192}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Tutorial
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &474748972
@@ -2876,7 +2876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1415386352
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2892,10 +2892,10 @@ RectTransform:
   - {fileID: 548892930}
   m_Father: {fileID: 1443288282}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.120000005, y: 0.1377037}
-  m_AnchorMax: {x: 0.3553125, y: 0.7195925}
-  m_AnchoredPosition: {x: 504, y: 77}
-  m_SizeDelta: {x: -352, y: -528}
+  m_AnchorMin: {x: 0.19831249, y: 0.036000002}
+  m_AnchorMax: {x: 0.80031264, y: 0.96000004}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: -1056, y: -898}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1417503384
 GameObject:
@@ -4089,7 +4089,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13.112183, y: -4.404541}
+  m_AnchoredPosition: {x: 399.11218, y: 225.59546}
   m_SizeDelta: {x: 212.7059, y: 53.1765}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1924612639
@@ -4112,7 +4112,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Orang Orang '
+  m_text: "Given Ariel Saputra (Project Manager, Game Designer, Technical Artist)\n\nYohana
+    Malinda Lamria (UI Artist)\n\nMuhammad Irfan Hanafi (2D Artist, UI Artist (Main
+    Menu))\n\nFirdi Kurnia Rahman (Programmer)\n\nOsadi Cipta Binawa\_(Programmer)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1e7c97791d03b1d4a87f0b03243aa17d, type: 2}
   m_sharedMaterial: {fileID: -9118125507818801489, guid: 1e7c97791d03b1d4a87f0b03243aa17d, type: 2}
@@ -4177,7 +4179,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -743.6648, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
