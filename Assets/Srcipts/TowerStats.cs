@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TowerStats : MonoBehaviour, IHealth
 {
@@ -13,6 +15,8 @@ public class TowerStats : MonoBehaviour, IHealth
     [SerializeField] private GameObject uiPanel;
     [SerializeField] protected float fireRate => towerData.fireRate;
     [SerializeField] private float maxHP => towerData.HP;
+    [SerializeField] private Slider Hpbar;
+    [SerializeField] private GameObject HpSlider;
     [SerializeField] private float dmg => towerData.Damage;
     [SerializeField] private float curHP;
     [SerializeField] protected GameObject projectilePrefab;
@@ -40,6 +44,7 @@ public class TowerStats : MonoBehaviour, IHealth
     {
         gridManager = FindFirstObjectByType<GridManager>();
         curHP = maxHP;
+        UpdateHpBar();
         if (gridManager != null)
         {
             currentGridPosition = GetGridPositionFromWorld(transform.position);
@@ -259,9 +264,17 @@ public class TowerStats : MonoBehaviour, IHealth
         {
             Die();
             GameManager.Instance.currentTowerCount--;
+            HpSlider.SetActive(true);
+            UpdateHpBar();
             GameManager.Instance.updateUI();
             Destroy(gameObject);
         }
+    }
+
+    public void UpdateHpBar()
+    {
+        Hpbar.value = curHP;
+        Hpbar.maxValue = maxHP;
     }
 
     public void Die()
