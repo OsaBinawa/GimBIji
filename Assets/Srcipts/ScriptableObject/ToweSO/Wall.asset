@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wall
   m_EditorClassIdentifier: 
   Name: Wall
-  HP: 5000
+  HP: 2000
   Damage: 0
   fireRate: 0
   icon: {fileID: 21300000, guid: 4dbb03db67f6bbb419c1a1ee81b51c8f, type: 3}
