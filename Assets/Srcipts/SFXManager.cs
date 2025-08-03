@@ -9,7 +9,7 @@ public class SFXManager : MonoBehaviour
     public AudioClip clickSound;
     public AudioClip hoverSound;
 
-    public AudioSource audioSource; // Assign in Inspector if you want
+    public AudioSource audioSource;
 
     void Awake()
     {

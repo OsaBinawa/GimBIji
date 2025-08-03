@@ -5365,6 +5365,7 @@ RectTransform:
   m_Children:
   - {fileID: 711585946}
   - {fileID: 596448046}
+  - {fileID: 784350339}
   m_Father: {fileID: 2079569402}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5888,17 +5889,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784350338}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1667564170}
-  m_Father: {fileID: 2079569402}
+  m_Father: {fileID: 443907357}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -377.45352, y: -212.74501}
+  m_AnchoredPosition: {x: -1685.1243, y: 946.86926}
   m_SizeDelta: {x: 263.4428, y: 71.8057}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &784350340
@@ -5921,7 +5922,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5063783073602384520, guid: bd36e86b65eae214e87e1492c9772da0, type: 3}
+  m_Sprite: {fileID: -8336031325738844136, guid: 2013e546f0b5fcb45be4dab4c193f3a1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6203,7 +6204,7 @@ PrefabInstance:
     - target: {fileID: 9132128992823007933, guid: d0cf2914baedc784e95969ed6bfe5e4d, type: 3}
       propertyPath: rightSprite
       value: 
-      objectReference: {fileID: 8425035567514470670, guid: 4c743ae42181e8a49a65b8ec3bb72ace, type: 3}
+      objectReference: {fileID: 5775579837579301767, guid: 35dae203aa8f5934aa91b7d603945229, type: 3}
     - target: {fileID: 9132128992823007933, guid: d0cf2914baedc784e95969ed6bfe5e4d, type: 3}
       propertyPath: startButton
       value: 
@@ -7285,8 +7286,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281413937
-  m_fontColor: {r: 0.19215688, g: 0.19215688, b: 0.19215688, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -12936,7 +12937,6 @@ RectTransform:
   - {fileID: 443907357}
   - {fileID: 981884084}
   - {fileID: 1573360648}
-  - {fileID: 784350339}
   m_Father: {fileID: 1846269184}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
