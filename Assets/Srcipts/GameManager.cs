@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
     {
         enemyCountText.text = remainingEnemies.ToString();
         AllTowerCountText.text = $"{TowerManager.Instance.availableTowers.Count}/{maxTowerSelected}";
+        TowerBar.value = currentTowerCount;
+        TowerBar.maxValue = maxTowersAllowed;
     }
 
     public void UpdateWaveUI()

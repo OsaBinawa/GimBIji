@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour,IHealth
     [SerializeField] private Sprite downSprite;
     [SerializeField] private Sprite leftSprite;
     [SerializeField] private Sprite rightSprite;
+    [SerializeField] private Slider HpBar;
+    [SerializeField] private GameObject HpSlider;
     public float CurrentHealth { get; private set; } = 100f;
     public float MaxHealth { get; private set; } = 100f;
     private Queue<Vector3> pathQueue = new Queue<Vector3>();
@@ -35,11 +37,13 @@ public class PlayerController : MonoBehaviour,IHealth
     private void Awake()
     {
         UI = FindFirstObjectByType<UImanagers>();
+        UpdateHpBar();
     }
 
     public void Start()
     {
         startPosition = transform.position;
+        UpdateHpBar();
     }
 
     public void SetPath(List<GridTile> path)
@@ -102,6 +106,7 @@ public class PlayerController : MonoBehaviour,IHealth
 
         isMoving = false;
 
+        spriteRenderer.sprite = leftSprite;
         // Call event when finished path
         onPathCompleted?.Invoke();
     }
@@ -205,6 +210,8 @@ public class PlayerController : MonoBehaviour,IHealth
     {
         Debug.Log($"Player {damage} damage!");
         CurrentHealth -= damage;
+        HpSlider.SetActive(true);
+        UpdateHpBar();
         if (CurrentHealth <= 0)
         {
             Die(); 
@@ -250,6 +257,13 @@ public class PlayerController : MonoBehaviour,IHealth
     {
         return Vector3.Distance(transform.position, finishTilePosition) < 0.1f;
     }
+
+    public void UpdateHpBar()
+    {
+        HpBar.value = CurrentHealth;
+        HpBar.maxValue = MaxHealth;
+    }
+
     public void ResetToStartPosition()
     {
         StopAllCoroutines(); // Hentikan gerakan saat ini

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour, IHealth
 {
@@ -13,6 +14,8 @@ public class Enemy : MonoBehaviour, IHealth
     [SerializeField] protected float attackDelay = 1f;
     [SerializeField] protected LayerMask towerLayer;
 
+    [SerializeField] protected GameObject BarSlider;
+    [SerializeField] protected Slider Hpbar;
     [SerializeField] protected bool attacking = false;
     [SerializeField] protected float maxHealth = 100f;
     [SerializeField] protected float currentHealth = 100f;
@@ -27,8 +30,18 @@ public class Enemy : MonoBehaviour, IHealth
     private void Awake()
     {
         playerController = FindAnyObjectByType<PlayerController>();
+        UpdateHPbar();
+        
+    }
+    private void Start()
+    {
+        UpdateHPbar();
     }
 
+    private void Update()
+    {
+        //UpdateHPbar();
+    }
     public void SetPath(List<GridTile> path)
     {
         this.path = new List<GridTile>(path); // clone the path
@@ -111,6 +124,8 @@ public class Enemy : MonoBehaviour, IHealth
     {
         Debug.Log($"Enemy took {damage} damage!");
         currentHealth -= damage;
+        BarSlider.SetActive(true);
+        UpdateHPbar();
         if (currentHealth <= 0)
         {
             Die();
@@ -134,7 +149,11 @@ public class Enemy : MonoBehaviour, IHealth
         Destroy(gameObject);
     }
 
-
+    public void UpdateHPbar()
+    {
+        Hpbar.value = currentHealth;
+        Hpbar.maxValue = maxHealth;
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
