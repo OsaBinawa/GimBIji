@@ -93,7 +93,7 @@ public class UImanagers : MonoBehaviour
                     {
                         if (obj != null)
                         {
-                            obj.transform.DOScale(.5f, 0.25f)
+                            obj.transform.DOScale(.7f, 0.25f)
                                 .SetEase(Ease.OutBack)
                                 .SetDelay(.5f);
                            

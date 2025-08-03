@@ -2,6 +2,7 @@
 using DG.Tweening.Core.Easing;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     public int maxTowerSelected;
     public int maxTowersAllowed = 5; 
     public int currentTowerCount = 0;
+    public CanvasGroup fadeCanvas;
     void Awake()
     {
         Time.timeScale = 1f;
@@ -95,7 +97,12 @@ public class GameManager : MonoBehaviour
             enemySpawner.OnAllEnemiesDefeated();
             if (enemySpawner.currentWaveIndex >= enemySpawner.waveManager.waves.Count)
             {
-                Debug.Log("Win game"); //INI Win Game ya Nanti bikin method aja gpp nunggu UI dulu aku debug dulu no problem lah ya
+                WinPanel.SetActive(true);
+                WinPanel.transform.localScale = Vector3.zero;
+                WinPanel.transform.DOScale(Vector3.one, .2f)
+                    .SetEase(Ease.OutSine)
+                    .SetUpdate(true);
+                Debug.Log("Win game"); 
             }
         }
     }
@@ -105,10 +112,10 @@ public class GameManager : MonoBehaviour
         TowerStats[] allTowers = FindObjectsByType<TowerStats>(FindObjectsSortMode.None);
         foreach (var tower in allTowers)
         {
-            tower.OnDestroyButton(); // Will also call RemoveTower()
+            tower.OnDestroyButton(); 
         }
 
-        // Reset tower count immediately
+        
         currentTowerCount = 0;
         updateUI();
         if (enemySpawner != null)
@@ -139,5 +146,19 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0f;
         }
     }
+    public void RetryGame()
+    {
+        fadeCanvas.gameObject.SetActive(true);
+        fadeCanvas.alpha = 0;
+
+        fadeCanvas.DOFade(1, .2f)
+            .SetEase(Ease.Linear)
+            .SetUpdate(true)
+            .OnComplete(() =>
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            });
+    }
+
 }
 

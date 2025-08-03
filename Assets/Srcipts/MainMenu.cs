@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,7 +7,9 @@ public class MainMenu : MonoBehaviour
 {
     
     [Header("All Panels")]
-    public List<GameObject> panels = new(); // Drag all your panels here in the Inspector
+    public List<GameObject> panels = new();
+
+    public CanvasGroup fadeCanvas;
 
     public void ShowPanel(GameObject panelToShow)
     {
@@ -26,6 +29,15 @@ public class MainMenu : MonoBehaviour
 
     public void GoToScene(string Scenes)
     {
-        SceneManager.LoadScene(Scenes);
+        fadeCanvas.gameObject.SetActive(true);
+        fadeCanvas.alpha = 0;
+        fadeCanvas.DOFade(1, .2f)
+            .SetEase(Ease.Linear)
+            .OnComplete(() =>
+            {
+                SceneManager.LoadScene(Scenes);
+            });
+    
+    
     }
 }
