@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour,IHealth
     [SerializeField] private Sprite rightSprite;
     [SerializeField] private Slider HpBar;
     [SerializeField] private GameObject HpSlider;
+    [SerializeField]private bool hasDeliveredToWorkshop = false;
     public float CurrentHealth { get; private set; } = 100f;
     public float MaxHealth { get; private set; } = 100f;
     private Queue<Vector3> pathQueue = new Queue<Vector3>();
@@ -174,6 +175,7 @@ public class PlayerController : MonoBehaviour,IHealth
         Vector3.right
     };
 
+        // Check adjacent drop-off tiles
         foreach (var dir in directions)
         {
             if (heldResourceCount <= 0) break;
@@ -185,41 +187,45 @@ public class PlayerController : MonoBehaviour,IHealth
             {
                 Debug.Log("Dropped off: " + hit.name);
 
-                // Get grid position and remove from GridManager so tile becomes free
-                Vector2Int gridPos = GridManager.instance.GetGridPositionFromWorld(hit.transform.position);
-                //GridManager.instance.RemoveResourceAt(gridPos);
-
+                // Deduct resource
                 heldResourceCount--;
                 GameManager.Instance.maxTowerSelected++;
                 foundAny = true;
 
-                WorkShopUI wsUI = FindFirstObjectByType<WorkShopUI>();
+                // Always notify workshop UI
+                WorkShopUI wsUI = hit.GetComponentInChildren<WorkShopUI>();
                 if (wsUI != null)
                 {
-                    int delivered = 1; // or count how many delivered
-                    wsUI.UpdateUI(delivered);
+                    wsUI.AddDelivered(1);
                 }
             }
+        }
 
-            Vector2Int playerGridPos = GridManager.instance.GetGridPositionFromWorld(transform.position);
-            if (playerGridPos == GridManager.instance.finishTilePos && heldResourceCount > 0)
+        // Check finish tile
+        Vector2Int playerGridPos = GridManager.instance.GetGridPositionFromWorld(transform.position);
+        GridTile currentTile = GridManager.instance.GetTileAtPosition(playerGridPos);
+
+        if (currentTile != null && currentTile.tileType == TileType.Finish)
+        {
+            if (heldResourceCount > 0)
             {
                 heldResourceCount--;
                 GameManager.Instance.maxTowerSelected++;
                 foundAny = true;
-
-                WorkShopUI wsUI = FindFirstObjectByType<WorkShopUI>();
-                if (wsUI != null)
-                {
-                    int delivered = 1;
-                    wsUI.UpdateUI(delivered);
-                }
             }
 
+            // Always notify UI when on finish tile
+            WorkShopUI wsUI = currentTile.GetComponentInChildren<WorkShopUI>();
+            if (wsUI != null)
+            {
+                wsUI.AddDelivered(1);
+            }
         }
 
         return foundAny;
     }
+
+
     public void TakeDamage(float damage)
     {
         Debug.Log($"Player {damage} damage!");
