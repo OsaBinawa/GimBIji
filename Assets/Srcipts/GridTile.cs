@@ -42,10 +42,10 @@ public class GridTile : MonoBehaviour
         switch (tileType)
         {
             case TileType.Start:
-                sr.color = Color.blue;
+                sr.color = Color.white;
                 break;
             case TileType.Finish:
-                sr.color = Color.red;
+                sr.color = Color.white;
                 break;
             default:
                 sr.sprite = basedSprites[randomBasedSprite];

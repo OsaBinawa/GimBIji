@@ -73,17 +73,11 @@ public class UImanagers : MonoBehaviour
         {
             if (obj != null)
             {
-                obj.SetActive(true); // Must be active for DOTween to run
-                obj.transform.localScale = Vector3.zero; // Start hidden
+                obj.SetActive(true); 
+                obj.transform.localScale = Vector3.zero; 
             }
         }
-        // Optional: disable shop content initially
-       /* foreach (Transform child in shopRect)
-        {
-            child.gameObject.SetActive(false);
-        }*/
-
-        // Start scale at zero for animation
+       
         shopRect.localScale = Vector3.zero;
 
         DOVirtual.DelayedCall(0.1f, () =>
@@ -92,7 +86,7 @@ public class UImanagers : MonoBehaviour
             .SetEase(Ease.OutBack)
             .OnComplete(() =>
             {
-                // Enable content after 0.1 sec
+                
                 DOVirtual.DelayedCall(0.1f, () =>
                 {
                     foreach (var obj in shopContent)
@@ -109,6 +103,35 @@ public class UImanagers : MonoBehaviour
             });
         });
     }
+
+
+    public void CloseShop()
+    {
+        if (Shop == null) return;
+
+        RectTransform shopRect = Shop.GetComponent<RectTransform>();
+
+        foreach (var obj in shopContent)
+        {
+            if (obj != null && obj.activeSelf)
+            {
+                obj.transform.DOScale(Vector3.zero, 0.2f)
+                    .SetEase(Ease.InBack);
+            }
+        }
+
+        DOVirtual.DelayedCall(0.2f, () =>
+        {
+            shopRect.DOScale(Vector3.zero, 0.3f)
+                .SetEase(Ease.InBack)
+                .OnComplete(() =>
+                {
+                    Shop.SetActive(false);
+                    vigShop.SetActive(false);
+                });
+        });
+    }
+
 
 }
 

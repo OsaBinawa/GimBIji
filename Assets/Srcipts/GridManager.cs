@@ -35,6 +35,8 @@ public class GridManager : MonoBehaviour
 
     public WaveManager waveManager;
     [SerializeField] private EnemySpawner spawner;
+    public GameObject startTilePrefabObject;
+    public GameObject finishTilePrefabObject;
 
     private GridTile[,] grid;
 
@@ -81,6 +83,21 @@ public class GridManager : MonoBehaviour
 
         SetTileType(startTilePos, TileType.Start);
         SetTileType(finishTilePos, TileType.Finish);
+
+        if (startTilePrefabObject != null && IsInBounds(startTilePos))
+        {
+            GridTile startTile = grid[startTilePos.x, startTilePos.y];
+            Instantiate(startTilePrefabObject, startTile.transform.position, Quaternion.identity, startTile.transform);
+            startTile.SetOccupied(true); // so it can't place towers there
+        }
+
+        
+        if (finishTilePrefabObject != null && IsInBounds(finishTilePos))
+        {
+            GridTile finishTile = grid[finishTilePos.x, finishTilePos.y];
+            Instantiate(finishTilePrefabObject, finishTile.transform.position, Quaternion.identity, finishTile.transform);
+            finishTile.SetOccupied(true); // so it can't place towers there
+        }
 
         SpawnAllResources();
     }

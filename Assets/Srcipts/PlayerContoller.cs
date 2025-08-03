@@ -155,12 +155,21 @@ public class PlayerController : MonoBehaviour,IHealth
 
                 // Get grid position and remove from GridManager so tile becomes free
                 Vector2Int gridPos = GridManager.instance.GetGridPositionFromWorld(hit.transform.position);
-                GridManager.instance.RemoveResourceAt(gridPos);
+                //GridManager.instance.RemoveResourceAt(gridPos);
 
                 heldResourceCount--;
                 GameManager.Instance.maxTowerSelected++;
                 foundAny = true;
             }
+
+            Vector2Int playerGridPos = GridManager.instance.GetGridPositionFromWorld(transform.position);
+            if (playerGridPos == GridManager.instance.finishTilePos && heldResourceCount > 0)
+            {
+                heldResourceCount--;
+                GameManager.Instance.maxTowerSelected++;
+                foundAny = true;
+            }
+
         }
 
         return foundAny;
