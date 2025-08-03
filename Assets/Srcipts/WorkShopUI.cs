@@ -1,24 +1,25 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
 public class WorkShopUI : MonoBehaviour
 {
     [Header("Target UI Object")]
-    public GameObject targetObject;     // UI element (Image, Panel, etc.)
-
+    public GameObject targetObject;
     [Header("Floating Settings")]
-    public float floatDistance = 20f;   // pixels to move up/down
-    public float floatDuration = 1f;    // seconds for one cycle
-
+    public float floatDistance = 20f;
+    public float floatDuration = 1f;
     [SerializeField] private TMP_Text UItext;
+    [SerializeField] private int requiredAmount = 1;
+
     private RectTransform rect;
-    private int requiredAmount = 1;
+    [SerializeField] private int deliveredAmount = 0;
+    private bool isCompleted = false;
+
     void Start()
     {
         if (targetObject == null)
         {
-            Debug.LogWarning("QuestMarkFloatUI: No target object assigned!");
             enabled = false;
             return;
         }
@@ -26,21 +27,38 @@ public class WorkShopUI : MonoBehaviour
         rect = targetObject.GetComponent<RectTransform>();
         if (rect == null)
         {
-            Debug.LogWarning("QuestMarkFloatUI: Target is not a UI element!");
             enabled = false;
             return;
         }
 
         Vector2 startPos = rect.anchoredPosition;
-
-        // DOTween bobbing animation for UI
         rect.DOAnchorPosY(startPos.y + floatDistance, floatDuration)
             .SetEase(Ease.InOutSine)
             .SetLoops(-1, LoopType.Yoyo);
+
+        UpdateUI();
+    }
+    private void Update()
+    {
+        //UpdateUI();
+    }
+    public void AddDelivered(int amount)
+    {
+        if (isCompleted) return;
+
+        deliveredAmount += amount;
+        if (deliveredAmount >= requiredAmount)
+        {
+            deliveredAmount = requiredAmount;
+            isCompleted = true;
+        }
+
+        UpdateUI();
     }
 
-    public void UpdateUI(int deliveredAmount)
+    private void UpdateUI()
     {
         UItext.text = $"{deliveredAmount}/{requiredAmount}";
     }
 }
+

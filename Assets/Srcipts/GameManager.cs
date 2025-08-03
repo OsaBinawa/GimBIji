@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public int maxTowersAllowed = 5; 
     public int currentTowerCount = 0;
     public CanvasGroup fadeCanvas;
+
     void Awake()
     {
         Time.timeScale = 1f;
