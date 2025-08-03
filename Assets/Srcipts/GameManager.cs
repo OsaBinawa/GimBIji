@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject WinPanel;
     [SerializeField] TMP_Text AllTowerCountText;
     [SerializeField] Text waveText;
+    public GameObject pauseMenuUI;
+    private bool isPaused = false;
     public int maxTowerSelected;
     public int maxTowersAllowed = 5; 
     public int currentTowerCount = 0;
@@ -54,6 +56,12 @@ public class GameManager : MonoBehaviour
         AllTowerCountText.text = $"{TowerManager.Instance.availableTowers.Count}/{maxTowerSelected}";
         TowerBar.value = currentTowerCount;
         TowerBar.maxValue = maxTowersAllowed;
+
+        if (Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            if (isPaused) Resume();
+            else Pause();
+        }
     }
 
     public void UpdateWaveUI()
@@ -114,24 +122,60 @@ public class GameManager : MonoBehaviour
 
     public void DestroyAllTowers()
     {
+        // Destroy all towers except the Start tile's child object
         TowerStats[] allTowers = FindObjectsByType<TowerStats>(FindObjectsSortMode.None);
         foreach (var tower in allTowers)
         {
             GridTile tile = tower.GetComponentInParent<GridTile>();
-            if (tile != null && (tile.tileType == TileType.Start || tile.tileType == TileType.Finish))
+
+            // Skip Start tile objects completely
+            if (tile != null && tile.tileType == TileType.Start)
                 continue;
-            tower.OnDestroyButton(); 
+
+            tower.OnDestroyButton();
         }
 
-        
+        // --- Regenerate Finish Tile ---
+        if (GridManager.instance != null)
+        {
+            var finishTile = GridManager.instance.GetTileAtPosition(GridManager.instance.finishTilePos);
+
+            if (finishTile != null)
+            {
+                // Destroy any remaining child on the finish tile (if not already destroyed)
+                for (int i = finishTile.transform.childCount - 1; i >= 0; i--)
+                {
+                    Destroy(finishTile.transform.GetChild(i).gameObject);
+                }
+
+                // Re-instantiate the finish tile prefab
+                if (GridManager.instance.finishTilePrefabObject != null)
+                {
+                    Instantiate(
+                        GridManager.instance.finishTilePrefabObject,
+                        finishTile.transform.position,
+                        Quaternion.identity,
+                        finishTile.transform
+                    );
+                    finishTile.SetOccupied(true);
+                }
+            }
+        }
+
+        // Reset tower count UI
         currentTowerCount = 0;
         updateUI();
+
         if (enemySpawner != null)
         {
             enemySpawner.playerEnd(false);
             Debug.Log("Reset playerReachEnd to false because all towers were destroyed.");
         }
+
+        // Animate tower bar
         TowerBar.DOValue(currentTowerCount, 0.5f).SetEase(Ease.OutSine);
+
+        // Fade in/out wave text
         fadeCanvas.gameObject.SetActive(true);
         fadeCanvas.alpha = 0;
 
@@ -141,9 +185,9 @@ public class GameManager : MonoBehaviour
             {
                 if (waveText != null && enemySpawner != null)
                 {
-                    waveText.gameObject.SetActive(true); // Show text
+                    waveText.gameObject.SetActive(true);
                     int waveNumber = enemySpawner.currentWaveIndex + 1;
-                    waveText.text = ""; // start empty
+                    waveText.text = "";
                     waveText.DOText($"Wave {waveNumber}", 1f, true, ScrambleMode.None);
                 }
             })
@@ -153,11 +197,9 @@ public class GameManager : MonoBehaviour
             {
                 if (waveText != null)
                     fadeCanvas.gameObject.SetActive(false);
-                    waveText.gameObject.SetActive(false);
-                
+                waveText.gameObject.SetActive(false);
             });
     }
-
 
     public void updateUI()
     {
@@ -190,6 +232,26 @@ public class GameManager : MonoBehaviour
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             });
+    }
+
+    public void Pause()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f; // Stops game time
+        isPaused = true;
+    }
+
+    public void Resume()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f; // Resumes game time
+        isPaused = false;
+    }
+
+    public void MainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void OnApplicationQuit()
