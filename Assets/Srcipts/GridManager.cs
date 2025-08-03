@@ -147,11 +147,16 @@ public class GridManager : MonoBehaviour
         if (IsInBounds(pos))
         {
             GridTile tile = grid[pos.x, pos.y];
-            for (int i = tile.transform.childCount - 1; i >= 0; i--)
+
+            // Skip destroying start/finish tile children
+            if (tile.tileType != TileType.Start && tile.tileType != TileType.Finish)
             {
-                Destroy(tile.transform.GetChild(i).gameObject);
+                for (int i = tile.transform.childCount - 1; i >= 0; i--)
+                {
+                    Destroy(tile.transform.GetChild(i).gameObject);
+                }
+                tile.SetOccupied(false);
             }
-            tile.SetOccupied(false);
         }
     }
 
@@ -168,11 +173,15 @@ public class GridManager : MonoBehaviour
                 if (!stillExists && IsInBounds(pos))
                 {
                     GridTile tile = grid[pos.x, pos.y];
-                    for (int i = tile.transform.childCount - 1; i >= 0; i--)
+                    
+                    if (tile.tileType != TileType.Start && tile.tileType != TileType.Finish)
                     {
-                        Destroy(tile.transform.GetChild(i).gameObject);
+                        for (int i = tile.transform.childCount - 1; i >= 0; i--)
+                        {
+                            Destroy(tile.transform.GetChild(i).gameObject);
+                        }
+                        tile.SetOccupied(false);
                     }
-                    tile.SetOccupied(false);
                 }
             }
         }

@@ -96,13 +96,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3868954713013810680}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 025d8a5b3cd48e44cb7fbfc820cbb95a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 0}
-  tileType: 0
+  tileType: 1
   basedSprites:
   - {fileID: 1073298726, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}
   - {fileID: 1459745494, guid: d8af60f540f05d14681fee99c2f05a1d, type: 3}

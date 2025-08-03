@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject LosePanel;
     [SerializeField] GameObject WinPanel;
     [SerializeField] TMP_Text AllTowerCountText;
+    [SerializeField] Text waveText;
     public int maxTowerSelected;
     public int maxTowersAllowed = 5; 
     public int currentTowerCount = 0;
@@ -65,7 +66,7 @@ public class GameManager : MonoBehaviour
         return currentTowerCount < maxTowersAllowed;
     }
 
-    // ✅ Register a tower after it is successfully placed
+    
     public void RegisterPlacedTower()
     {
         currentTowerCount++;
@@ -116,6 +117,9 @@ public class GameManager : MonoBehaviour
         TowerStats[] allTowers = FindObjectsByType<TowerStats>(FindObjectsSortMode.None);
         foreach (var tower in allTowers)
         {
+            GridTile tile = tower.GetComponentInParent<GridTile>();
+            if (tile != null && (tile.tileType == TileType.Start || tile.tileType == TileType.Finish))
+                continue;
             tower.OnDestroyButton(); 
         }
 
@@ -128,6 +132,30 @@ public class GameManager : MonoBehaviour
             Debug.Log("Reset playerReachEnd to false because all towers were destroyed.");
         }
         TowerBar.DOValue(currentTowerCount, 0.5f).SetEase(Ease.OutSine);
+        fadeCanvas.gameObject.SetActive(true);
+        fadeCanvas.alpha = 0;
+
+        DOTween.Sequence()
+            .Append(fadeCanvas.DOFade(1, 0.2f).SetEase(Ease.Linear))
+            .AppendCallback(() =>
+            {
+                if (waveText != null && enemySpawner != null)
+                {
+                    waveText.gameObject.SetActive(true); // Show text
+                    int waveNumber = enemySpawner.currentWaveIndex + 1;
+                    waveText.text = ""; // start empty
+                    waveText.DOText($"Wave {waveNumber}", 1f, true, ScrambleMode.None);
+                }
+            })
+            .AppendInterval(2f)
+            .Append(fadeCanvas.DOFade(0, 0.2f).SetEase(Ease.Linear))
+            .OnComplete(() =>
+            {
+                if (waveText != null)
+                    fadeCanvas.gameObject.SetActive(false);
+                    waveText.gameObject.SetActive(false);
+                
+            });
     }
 
 
