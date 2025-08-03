@@ -4994,7 +4994,7 @@ MonoBehaviour:
   WinPanel: {fileID: 882917584}
   AllTowerCountText: {fileID: 882917583}
   waveText: {fileID: 0}
-  pauseMenuUI: {fileID: 0}
+  pauseMenuUI: {fileID: 1263681602}
   maxTowerSelected: 0
   maxTowersAllowed: 5
   currentTowerCount: 0
@@ -6070,6 +6070,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 7775214797082344951, guid: b91cdb87625faba4e8b8a9d6bbb711cb, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775214797082344951, guid: b91cdb87625faba4e8b8a9d6bbb711cb, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7927875249675710677, guid: b91cdb87625faba4e8b8a9d6bbb711cb, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7953296537056294253, guid: b91cdb87625faba4e8b8a9d6bbb711cb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -6664,6 +6676,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c1e087aac16c0145914e6aa9560b6f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1263681602 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3601923158123804941, guid: b91cdb87625faba4e8b8a9d6bbb711cb, type: 3}
+  m_PrefabInstance: {fileID: 882917581}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1324895166
 GameObject:
   m_ObjectHideFlags: 0
