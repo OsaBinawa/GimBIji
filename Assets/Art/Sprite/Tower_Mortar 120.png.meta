@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 504ad05ef7a675346bd3c34c999ae658
+guid: b40350e07771ed94ca783f6a7104e164
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4288217071036081520
-    second: Tower_tower 2 120_0
-  - first:
-      213: 1277493933515806394
-    second: Tower_tower 2 120_1
+      213: 8596455069993129669
+    second: Tower_Mortar 120_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -129,45 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tower_tower 2 120_0
+      name: Tower_Mortar 120_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 9
-        width: 111
-        height: 111
-      alignment: 9
-      pivot: {x: 0.44700584, y: 0.21988802}
+        x: 19
+        y: 3
+        width: 84
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0752fd6c4bec28b30800000000000000
-      internalID: 4288217071036081520
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tower_tower 2 120_1
-      rect:
-        serializedVersion: 2
-        x: 122
-        y: 9
-        width: 111
-        height: 111
-      alignment: 9
-      pivot: {x: 0.5605649, y: 0.21231742}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ab61dedc6f19ab110800000000000000
-      internalID: 1277493933515806394
+      spriteID: 5c6db86175ebc4770800000000000000
+      internalID: 8596455069993129669
       vertices: []
       indices: 
       edges: []
@@ -176,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e5cdd5301407bbe4db40e117a1121b1e
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -185,9 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Tower_tower 2 120_0: 4288217071036081520
-      Tower_tower 2 120_1: 1277493933515806394
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

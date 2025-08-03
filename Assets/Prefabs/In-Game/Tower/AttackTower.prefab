@@ -212,12 +212,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 1737957125956386992, guid: 1bcd93a3dcd9a4e46937400c08fec581, type: 3}
+  m_Sprite: {fileID: -8066952711134590279, guid: e0512acf30e471f43ba5479d09a79e50, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.92, y: 1.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -236,6 +236,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerID: 0
+  spriteRenderer: {fileID: 5907110195087825490}
+  upSprite: {fileID: -8066952711134590279, guid: e0512acf30e471f43ba5479d09a79e50, type: 3}
+  rightSprite: {fileID: -9148474817338313757, guid: e0512acf30e471f43ba5479d09a79e50, type: 3}
+  downSprite: {fileID: -4981461910751109202, guid: e0512acf30e471f43ba5479d09a79e50, type: 3}
+  leftSprite: {fileID: -1051491693243285616, guid: e0512acf30e471f43ba5479d09a79e50, type: 3}
   towerData: {fileID: 11400000, guid: 0babd7d0e6a9c7d4cb68ffe72d00095c, type: 2}
   uiPanel: {fileID: 8586128152865743670}
   curHP: 0
@@ -282,9 +287,9 @@ BoxCollider2D:
   m_Offset: {x: -0.008474588, y: 0.31920904}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5092115, y: 0.22717175}
-    oldSize: {x: 0.92, y: 1.17}
-    newSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.92, y: 1.31}
+    newSize: {x: 0.92, y: 1.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

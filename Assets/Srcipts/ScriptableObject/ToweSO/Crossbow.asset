@@ -16,7 +16,7 @@ MonoBehaviour:
   HP: 50
   Damage: 12
   fireRate: 4
-  icon: {fileID: 4288217071036081520, guid: 504ad05ef7a675346bd3c34c999ae658, type: 3}
+  icon: {fileID: -7093375192541672114, guid: 84222d7cfccaf004cb47c10859f02797, type: 3}
   towerPref: {fileID: 1763084283338127800, guid: 4a484bcdd79d8294fbdd47c63a0b040d, type: 3}
   towerType: 0
   allowedTileTypes: 00000000

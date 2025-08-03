@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 1bcd93a3dcd9a4e46937400c08fec581
+guid: e0512acf30e471f43ba5479d09a79e50
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1737957125956386992
-    second: Tower_tower 3 120(1)_0
+      213: -4981461910751109202
+    second: Tower_tower 3 120_0
   - first:
-      213: 6447753470324519666
-    second: Tower_tower 3 120(1)_1
+      213: -8066952711134590279
+    second: Tower_tower 3 120_1
+  - first:
+      213: -9148474817338313757
+    second: Tower_tower 3 120_2
+  - first:
+      213: -1051491693243285616
+    second: Tower_tower 3 120_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -78,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -129,45 +135,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tower_tower 3 120(1)_0
+      name: Tower_tower 3 120_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 3
+        x: 33
+        y: 23
         width: 92
-        height: 117
+        height: 119
       alignment: 9
-      pivot: {x: 0.5092115, y: 0.22717175}
+      pivot: {x: 0.49590608, y: 0.19298448}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0b04d774cc67e1810800000000000000
-      internalID: 1737957125956386992
+      spriteID: eaf9a8bf8ca4edab0800000000000000
+      internalID: -4981461910751109202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tower_tower 3 120(1)_1
+      name: Tower_tower 3 120_1
       rect:
         serializedVersion: 2
-        x: 133
-        y: 3
+        x: 193
+        y: 23
         width: 92
-        height: 117
+        height: 131
       alignment: 9
-      pivot: {x: 0.48925316, y: 0.22717175}
+      pivot: {x: 0.49590617, y: 0.1636047}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2f23cfd9e950b7950800000000000000
-      internalID: 6447753470324519666
+      spriteID: 9bac2f0ff3d6c0090800000000000000
+      internalID: -8066952711134590279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower_tower 3 120_2
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 23
+        width: 92
+        height: 117
+      alignment: 9
+      pivot: {x: 0.5122823, y: 0.18451723}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e371f3df961a0180800000000000000
+      internalID: -9148474817338313757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tower_tower 3 120_3
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 23
+        width: 92
+        height: 116
+      alignment: 9
+      pivot: {x: 0.5245647, y: 0.18829145}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09fb5f340e95861f0800000000000000
+      internalID: -1051491693243285616
       vertices: []
       indices: 
       edges: []
@@ -176,7 +226,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 68e8111efb8232a41a29972ee923400d
     internalID: 0
     vertices: []
     indices: 
@@ -186,8 +236,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Tower_tower 3 120(1)_0: 1737957125956386992
-      Tower_tower 3 120(1)_1: 6447753470324519666
+      Tower_tower 3 120_0: -4981461910751109202
+      Tower_tower 3 120_1: -8066952711134590279
+      Tower_tower 3 120_2: -9148474817338313757
+      Tower_tower 3 120_3: -1051491693243285616
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

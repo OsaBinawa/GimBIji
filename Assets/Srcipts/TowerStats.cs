@@ -4,6 +4,11 @@ using UnityEngine;
 public class TowerStats : MonoBehaviour, IHealth
 {
     public int towerID;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite upSprite;
+    [SerializeField] private Sprite rightSprite;
+    [SerializeField] private Sprite downSprite;
+    [SerializeField] private Sprite leftSprite;
     [SerializeField] private TowerData towerData;
     [SerializeField] private GameObject uiPanel;
     [SerializeField] protected float fireRate => towerData.fireRate;
@@ -84,6 +89,18 @@ public class TowerStats : MonoBehaviour, IHealth
         Destroy(this.gameObject);
     }
 
+    private void UpdateTowerSprite()
+    {
+        if (facingDirection == Vector2Int.up)
+            spriteRenderer.sprite = upSprite;
+        else if (facingDirection == Vector2Int.right)
+            spriteRenderer.sprite = rightSprite;
+        else if (facingDirection == Vector2Int.down)
+            spriteRenderer.sprite = downSprite;
+        else if (facingDirection == Vector2Int.left)
+            spriteRenderer.sprite = leftSprite;
+    }
+
     private void RotateDirectionClockwise()
     {
         if (facingDirection == Vector2Int.up)
@@ -94,7 +111,7 @@ public class TowerStats : MonoBehaviour, IHealth
             facingDirection = Vector2Int.left;
         else if (facingDirection == Vector2Int.left)
             facingDirection = Vector2Int.up;
-
+        UpdateTowerSprite();
         Debug.Log($"Tower facing now: {facingDirection}");
     }
 
