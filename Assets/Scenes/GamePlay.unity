@@ -4990,6 +4990,8 @@ MonoBehaviour:
   TowerCountText: {fileID: 77881639}
   remainingEnemies: 0
   enemyCountText: {fileID: 5489428580646785046}
+  LosePanel: {fileID: 620782363}
+  WinPanel: {fileID: 0}
   maxTowerSelected: 1
   maxTowersAllowed: 5
   currentTowerCount: 0
@@ -5349,8 +5351,8 @@ Transform:
   m_GameObject: {fileID: 383806434}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0225, y: 0.0123, z: 0}
-  m_LocalScale: {x: 0.92986274, y: 0.93057084, z: 1.0116}
+  m_LocalPosition: {x: 0.0225, y: 0.0123, z: 1}
+  m_LocalScale: {x: 0.92986274, y: 0.93057084, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -5453,6 +5455,11 @@ RectTransform:
 --- !u!1 &533121756 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4794802752568485642, guid: b91cdb87625faba4e8b8a9d6bbb711cb, type: 3}
+  m_PrefabInstance: {fileID: 5489428580646785045}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &620782363 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7812754824060893114, guid: b91cdb87625faba4e8b8a9d6bbb711cb, type: 3}
   m_PrefabInstance: {fileID: 5489428580646785045}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &648881725 stripped
@@ -11279,6 +11286,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6482358932677545413, guid: b91cdb87625faba4e8b8a9d6bbb711cb, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812754824060893114, guid: b91cdb87625faba4e8b8a9d6bbb711cb, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8555590169207329266, guid: b91cdb87625faba4e8b8a9d6bbb711cb, type: 3}

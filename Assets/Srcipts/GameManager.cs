@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMP_Text TowerCountText;
     [SerializeField] private int remainingEnemies = 0;
     [SerializeField] TextMeshProUGUI enemyCountText;
+    [SerializeField] GameObject LosePanel;
+    [SerializeField] GameObject WinPanel;
     public int maxTowerSelected;
     public int maxTowersAllowed = 5; 
     public int currentTowerCount = 0;
@@ -128,6 +130,11 @@ public class GameManager : MonoBehaviour
     {
         if (playerController.CurrentHealth <= 0)
         {
+            LosePanel.SetActive(true);
+            LosePanel.transform.localScale = Vector3.zero;
+            LosePanel.transform.DOScale(Vector3.one, .2f)
+                .SetEase(Ease.OutSine)
+                .SetUpdate(true);
             Debug.Log("GameOver");
             Time.timeScale = 0f;
         }
