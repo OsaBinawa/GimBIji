@@ -7994,7 +7994,7 @@ MonoBehaviour:
   - dialogText: Now, goodluck.
     highlightTarget: {fileID: 0}
     waitForClick: 0
-    waitTime: 2
+    waitTime: 0.8
     showPanel: 1
     nextButton: 0
     changePanelPosition: 0
