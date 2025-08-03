@@ -8,5 +8,6 @@ public class WaveData
     public float timeBetweenEnemies = 0.2f;
     public float delayBetweenBatches = 1f;
     public List<int> enemyTypeIndices;
+    public int maxTowersAllowed = 5;
     public List<ResoucePosition> Resources = new();
 }
