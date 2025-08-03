@@ -11941,7 +11941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892308252652370979, guid: b91cdb87625faba4e8b8a9d6bbb711cb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3.600006
+      value: 1.6000061
       objectReference: {fileID: 0}
     - target: {fileID: 2167439185027872027, guid: b91cdb87625faba4e8b8a9d6bbb711cb, type: 3}
       propertyPath: m_Pivot.x
@@ -12073,7 +12073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7587147882921454368, guid: b91cdb87625faba4e8b8a9d6bbb711cb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.6
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7953296537056294253, guid: b91cdb87625faba4e8b8a9d6bbb711cb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
