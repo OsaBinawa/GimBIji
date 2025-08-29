@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Attacker
   HP: 100
   Damage: 20
-  fireRate: 2
+  fireRate: 1
   icon: {fileID: -9148474817338313757, guid: e0512acf30e471f43ba5479d09a79e50, type: 3}
   towerPref: {fileID: 1763084283338127800, guid: f4a4a2b1644d25946b74da4493e13da7, type: 3}
   towerPreview: {fileID: 1763084283338127800, guid: e4de5bb529ade6b438c3d0a1e7670752, type: 3}
